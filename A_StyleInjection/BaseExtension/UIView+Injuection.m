@@ -18,7 +18,7 @@
 #define kAssociatedViewSettingDict  @"AssociatedViewSettingDict"
 #define kAssociatedParentController @"AssociatedParentController"
 
-@dynamic styleIdentifier;
+@dynamic styleIdentifier, parentController;
 
 static IMP __original_WillMoveToWindow_Method_Imp;
 
@@ -37,7 +37,7 @@ static IMP __original_WillMoveToWindow_Method_Imp;
     [self setAssociateValue:value withKey:kStyleIdentifier type:OBJC_ASSOCIATION_COPY_NONATOMIC];
 }
 
-- (UIViewController *)ParentController {
+- (UIViewController *)parentController {
     return [self fetchAssociateValue:kAssociatedParentController];
 }
 - (void)setParentController:(UIViewController *)vc {
@@ -59,24 +59,26 @@ static IMP __original_WillMoveToWindow_Method_Imp;
 }
 
 void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
-    [self reloadStyle];
+    [self loadStyle:NO];
     ((void(*)(id,SEL))__original_WillMoveToWindow_Method_Imp)(self, _cmd);
 }
 
-- (void)reloadStyle {
+- (void)loadStyle:(BOOL)isReloadSubviews {
     NSDictionary<NSString *, id> *setting = [self __getStyleSetting];
     if (setting) {
         [self __setupStyle:setting];
     }
     
-    for (UIView *subview in [self subviews]) {
-        [subview reloadStyle];
+    if (isReloadSubviews) {
+        for (UIView *subview in [self subviews]) {
+            [subview loadStyle:isReloadSubviews];
+        }
     }
 }
 
 - (UIViewController *)__findParentController {
-    if ([self ParentController]) {
-        return [self ParentController];
+    if ([self parentController]) {
+        return [self parentController];
     } else {
 //        NSMutableArray *hierarchy = [[NSMutableArray alloc] init];
         

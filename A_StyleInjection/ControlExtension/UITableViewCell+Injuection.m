@@ -20,7 +20,6 @@
 
 - (void)layoutSubviews {
     NSLog(@"layout");
-    [self reloadStyle];
 }
 
 @end

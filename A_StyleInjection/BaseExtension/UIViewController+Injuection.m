@@ -11,18 +11,15 @@
 #import "A_InjuectionManager.h"
 #import <objc/runtime.h>
 
+
 @implementation UIViewController(Injuection)
 
 static IMP __original_ViewDidLoad_Method_Imp;
-static IMP __original_ViewWillAppear_Method_Imp;
-static IMP __original_ViewDidAppear_Method_Imp;
 
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-//        __original_ViewDidLoad_Method_Imp = method_setImplementation(class_getInstanceMethod([self class],@selector(viewDidLoad)),(IMP)__A_InjuectionViewDidLoad);
-//        __original_ViewWillAppear_Method_Imp = method_setImplementation(class_getInstanceMethod([self class],@selector(viewWillAppear:)),(IMP)__A_InjuectionViewWillAppear);
-//        __original_ViewDidAppear_Method_Imp = method_setImplementation(class_getInstanceMethod([self class],@selector(viewDidAppear:)),(IMP)__A_InjuectionViewDidAppear);
+        __original_ViewDidLoad_Method_Imp = method_setImplementation(class_getInstanceMethod([self class],@selector(viewDidLoad)),(IMP)__A_InjuectionViewDidLoad);
     });
 }
 
@@ -30,29 +27,10 @@ void __A_InjuectionViewDidLoad (id self,SEL _cmd) {
     NSString* name = NSStringFromClass(object_getClass(self));
     NSLog(@"InjuectionViewDidLoad %@", name);
     
-    [self loadStyle];
+    [self __setSubviewsParams:[[self view] subviews]];
     
     ((void(*)(id,SEL))__original_ViewDidLoad_Method_Imp)(self, _cmd);
 }
-
-void __A_InjuectionViewWillAppear (id self,SEL _cmd) {
-    NSString* name = NSStringFromClass(object_getClass(self));
-    NSLog(@"InjuectionViewWillAppear %@", name);
-    
-    [self loadStyle];
-    
-    ((void(*)(id,SEL))__original_ViewWillAppear_Method_Imp)(self, _cmd);
-}
-
-void __A_InjuectionViewDidAppear (id self,SEL _cmd) {
-    NSString* name = NSStringFromClass(object_getClass(self));
-    NSLog(@"InjuectionViewDidAppear %@", name);
-    
-    [self loadStyle];
-    
-    ((void(*)(id,SEL))__original_ViewDidAppear_Method_Imp)(self, _cmd);
-}
-
 - (NSArray<NSString *> *)__searchProperties {
     u_int count;
     objc_property_t *properties= class_copyPropertyList ([self class], &count);
@@ -68,19 +46,15 @@ void __A_InjuectionViewDidAppear (id self,SEL _cmd) {
     return list;
 }
 
-- (void)loadStyle {
-//    NSArray<NSString *> *properies = [[NSArray alloc] init];
-//    if ([[A_InjuectionManager share] loadingType] != InjuectionLoadingType_ViewAndProperty) {
-//        properies = [self __searchProperties];
-//    }
-//    
-//    NSString *controllerName = NSStringFromClass([self class]);
-//    
-//    [self __loadStyleForViews:[self.view subviews] withControllerName:controllerName properties:properies];
-    
-    
+- (void)__setSubviewsParams:(NSArray<UIView *> *)views {
+    for (UIView *itemView in views) {
+        [itemView setParentController:self];
+        
+        if ([itemView subviews] > 0) {
+            [self __setSubviewsParams:[itemView subviews]];
+        }
+    }
 }
-
 
 +(BOOL)__checkIfObject:(id)object overridesSelector:(SEL)selector {
     Class objSuperClass = [object superclass];

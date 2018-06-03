@@ -12,8 +12,8 @@
 @interface UIView(Injuection)
 
 @property (nonatomic, assign) IBInspectable NSString *styleIdentifier;
+@property (nonatomic, assign) UIViewController *parentController;
 
-- (void)setupStyle:(NSDictionary *)setting;
-- (void)reloadStyle;
+- (void)loadStyle:(BOOL)isReloadSubviews;
 
 @end
