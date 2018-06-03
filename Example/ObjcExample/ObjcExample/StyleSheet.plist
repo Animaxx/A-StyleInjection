@@ -2,9 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ViewController</key>
+	<key>@UILabel</key>
 	<dict>
-		<key>demo1</key>
+		<key>textColor</key>
+		<string>#FFFF00</string>
+	</dict>
+	<key>UINavigationController</key>
+	<dict>
+		<key>@UILabel</key>
+		<dict>
+			<key>textColor</key>
+			<string>#CCCCCC</string>
+		</dict>
+	</dict>
+	<key>ListViewController</key>
+	<dict>
+		<key>@UILabel</key>
+		<dict>
+			<key>text</key>
+			<string>Test Text</string>
+			<key>textColor</key>
+			<string>#0000FF</string>
+		</dict>
+		<key>#demo1</key>
 		<dict>
 			<key>layer.cornerRadius</key>
 			<string>10</string>

@@ -11,8 +11,9 @@
 
 @interface UIView(Injuection)
 
-@property (nonatomic, strong) IBInspectable NSString *styleIdentifier;
+@property (nonatomic, assign) IBInspectable NSString *styleIdentifier;
 
 - (void)setupStyle:(NSDictionary *)setting;
+- (void)reloadStyle;
 
 @end

@@ -14,10 +14,16 @@
 		A983C25E209228BD001E0D94 /* A_StyleInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = A983C25C209228BD001E0D94 /* A_StyleInjection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A983C26920929966001E0D94 /* UIViewController+Injuection.h in Headers */ = {isa = PBXBuildFile; fileRef = A983C26720929966001E0D94 /* UIViewController+Injuection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A983C26A20929966001E0D94 /* UIViewController+Injuection.m in Sources */ = {isa = PBXBuildFile; fileRef = A983C26820929966001E0D94 /* UIViewController+Injuection.m */; };
+		A9C5395B20C3ADAE00EA1747 /* StyleHierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = A9C5395920C3ADAE00EA1747 /* StyleHierarchy.h */; };
+		A9C5395C20C3ADAE00EA1747 /* StyleHierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C5395A20C3ADAE00EA1747 /* StyleHierarchy.m */; };
 		A9EF487B20AFE3A5004BE8E8 /* NSDictionary+Injuection.h in Headers */ = {isa = PBXBuildFile; fileRef = A9EF487920AFE3A5004BE8E8 /* NSDictionary+Injuection.h */; };
 		A9EF487C20AFE3A5004BE8E8 /* NSDictionary+Injuection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9EF487A20AFE3A5004BE8E8 /* NSDictionary+Injuection.m */; };
 		A9EF488120AFE677004BE8E8 /* A_ColorHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A9EF487F20AFE677004BE8E8 /* A_ColorHelper.h */; };
 		A9EF488220AFE677004BE8E8 /* A_ColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9EF488020AFE677004BE8E8 /* A_ColorHelper.m */; };
+		A9F5D83D20BF2945004BC495 /* UITableViewCell+Injuection.h in Headers */ = {isa = PBXBuildFile; fileRef = A9F5D83B20BF2945004BC495 /* UITableViewCell+Injuection.h */; };
+		A9F5D83E20BF2945004BC495 /* UITableViewCell+Injuection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F5D83C20BF2945004BC495 /* UITableViewCell+Injuection.m */; };
+		A9F5D84120BF4192004BC495 /* UITableView+Injuection.h in Headers */ = {isa = PBXBuildFile; fileRef = A9F5D83F20BF4192004BC495 /* UITableView+Injuection.h */; };
+		A9F5D84220BF4192004BC495 /* UITableView+Injuection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F5D84020BF4192004BC495 /* UITableView+Injuection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +36,16 @@
 		A983C25D209228BD001E0D94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A983C26720929966001E0D94 /* UIViewController+Injuection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Injuection.h"; sourceTree = "<group>"; };
 		A983C26820929966001E0D94 /* UIViewController+Injuection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Injuection.m"; sourceTree = "<group>"; };
+		A9C5395920C3ADAE00EA1747 /* StyleHierarchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StyleHierarchy.h; path = A_StyleInjection/Common/StyleHierarchy.h; sourceTree = SOURCE_ROOT; };
+		A9C5395A20C3ADAE00EA1747 /* StyleHierarchy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StyleHierarchy.m; path = A_StyleInjection/Common/StyleHierarchy.m; sourceTree = SOURCE_ROOT; };
 		A9EF487920AFE3A5004BE8E8 /* NSDictionary+Injuection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Injuection.h"; sourceTree = "<group>"; };
 		A9EF487A20AFE3A5004BE8E8 /* NSDictionary+Injuection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Injuection.m"; sourceTree = "<group>"; };
 		A9EF487F20AFE677004BE8E8 /* A_ColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A_ColorHelper.h; sourceTree = "<group>"; };
 		A9EF488020AFE677004BE8E8 /* A_ColorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A_ColorHelper.m; sourceTree = "<group>"; };
+		A9F5D83B20BF2945004BC495 /* UITableViewCell+Injuection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Injuection.h"; sourceTree = "<group>"; };
+		A9F5D83C20BF2945004BC495 /* UITableViewCell+Injuection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Injuection.m"; sourceTree = "<group>"; };
+		A9F5D83F20BF4192004BC495 /* UITableView+Injuection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+Injuection.h"; sourceTree = "<group>"; };
+		A9F5D84020BF4192004BC495 /* UITableView+Injuection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Injuection.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +78,9 @@
 		A983C25B209228BD001E0D94 /* A_StyleInjection */ = {
 			isa = PBXGroup;
 			children = (
-				A9EF487E20AFE3C5004BE8E8 /* Extension */,
-				A9EF487D20AFE3AD004BE8E8 /* Utility */,
+				A9F5D83A20BF0F6C004BC495 /* ControlExtension */,
+				A9EF487E20AFE3C5004BE8E8 /* BaseExtension */,
+				A9EF487D20AFE3AD004BE8E8 /* Common */,
 				A97D515820A9140000B2A52A /* A_InjuectionManager.h */,
 				A97D515920A9140000B2A52A /* A_InjuectionManager.m */,
 				A983C25C209228BD001E0D94 /* A_StyleInjection.h */,
@@ -76,18 +89,20 @@
 			path = A_StyleInjection;
 			sourceTree = "<group>";
 		};
-		A9EF487D20AFE3AD004BE8E8 /* Utility */ = {
+		A9EF487D20AFE3AD004BE8E8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A9C5395920C3ADAE00EA1747 /* StyleHierarchy.h */,
+				A9C5395A20C3ADAE00EA1747 /* StyleHierarchy.m */,
 				A9EF487F20AFE677004BE8E8 /* A_ColorHelper.h */,
 				A9EF488020AFE677004BE8E8 /* A_ColorHelper.m */,
 				A9EF487920AFE3A5004BE8E8 /* NSDictionary+Injuection.h */,
 				A9EF487A20AFE3A5004BE8E8 /* NSDictionary+Injuection.m */,
 			);
-			path = Utility;
+			path = Common;
 			sourceTree = "<group>";
 		};
-		A9EF487E20AFE3C5004BE8E8 /* Extension */ = {
+		A9EF487E20AFE3C5004BE8E8 /* BaseExtension */ = {
 			isa = PBXGroup;
 			children = (
 				A97D515C20A9366400B2A52A /* UIView+Injuection.h */,
@@ -95,7 +110,18 @@
 				A983C26720929966001E0D94 /* UIViewController+Injuection.h */,
 				A983C26820929966001E0D94 /* UIViewController+Injuection.m */,
 			);
-			path = Extension;
+			path = BaseExtension;
+			sourceTree = "<group>";
+		};
+		A9F5D83A20BF0F6C004BC495 /* ControlExtension */ = {
+			isa = PBXGroup;
+			children = (
+				A9F5D83B20BF2945004BC495 /* UITableViewCell+Injuection.h */,
+				A9F5D83C20BF2945004BC495 /* UITableViewCell+Injuection.m */,
+				A9F5D83F20BF4192004BC495 /* UITableView+Injuection.h */,
+				A9F5D84020BF4192004BC495 /* UITableView+Injuection.m */,
+			);
+			path = ControlExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,10 +133,13 @@
 			files = (
 				A983C25E209228BD001E0D94 /* A_StyleInjection.h in Headers */,
 				A97D515A20A9140000B2A52A /* A_InjuectionManager.h in Headers */,
+				A9F5D84120BF4192004BC495 /* UITableView+Injuection.h in Headers */,
 				A9EF488120AFE677004BE8E8 /* A_ColorHelper.h in Headers */,
 				A97D515E20A9366400B2A52A /* UIView+Injuection.h in Headers */,
+				A9C5395B20C3ADAE00EA1747 /* StyleHierarchy.h in Headers */,
 				A983C26920929966001E0D94 /* UIViewController+Injuection.h in Headers */,
 				A9EF487B20AFE3A5004BE8E8 /* NSDictionary+Injuection.h in Headers */,
+				A9F5D83D20BF2945004BC495 /* UITableViewCell+Injuection.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,7 +210,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9F5D84220BF4192004BC495 /* UITableView+Injuection.m in Sources */,
 				A9EF487C20AFE3A5004BE8E8 /* NSDictionary+Injuection.m in Sources */,
+				A9F5D83E20BF2945004BC495 /* UITableViewCell+Injuection.m in Sources */,
+				A9C5395C20C3ADAE00EA1747 /* StyleHierarchy.m in Sources */,
 				A983C26A20929966001E0D94 /* UIViewController+Injuection.m in Sources */,
 				A9EF488220AFE677004BE8E8 /* A_ColorHelper.m in Sources */,
 				A97D515F20A9366400B2A52A /* UIView+Injuection.m in Sources */,

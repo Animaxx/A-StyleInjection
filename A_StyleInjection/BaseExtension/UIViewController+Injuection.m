@@ -20,9 +20,9 @@ static IMP __original_ViewDidAppear_Method_Imp;
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-//        __original_ViewDidLoad_Method_Imp = method_setImplementation(class_getInstanceMethod([self class],@selector(viewDidLoad:)),(IMP)__A_InjuectionViewDidLoad);
-        __original_ViewWillAppear_Method_Imp = method_setImplementation(class_getInstanceMethod([self class],@selector(viewWillAppear:)),(IMP)__A_InjuectionViewWillAppear);
-//        __original_ViewDidAppear_Method_Imp = method_setImplementation(class_getInstanceMethod([self class],@selector(viewDidAppear:)),(IMP)__A_InjuectionViewWillAppear);
+//        __original_ViewDidLoad_Method_Imp = method_setImplementation(class_getInstanceMethod([self class],@selector(viewDidLoad)),(IMP)__A_InjuectionViewDidLoad);
+//        __original_ViewWillAppear_Method_Imp = method_setImplementation(class_getInstanceMethod([self class],@selector(viewWillAppear:)),(IMP)__A_InjuectionViewWillAppear);
+//        __original_ViewDidAppear_Method_Imp = method_setImplementation(class_getInstanceMethod([self class],@selector(viewDidAppear:)),(IMP)__A_InjuectionViewDidAppear);
     });
 }
 
@@ -67,41 +67,20 @@ void __A_InjuectionViewDidAppear (id self,SEL _cmd) {
     
     return list;
 }
-- (void)__loadStyleForViews:(NSArray<UIView *> *)views withControllerName:(NSString *)controllerName properties:(NSArray<NSString *> *)properties {
-    for (UIView *itemView in views) {
-        
-        NSString *styleKey = nil;
-        if ([itemView styleIdentifier]) {
-            styleKey = [itemView styleIdentifier];
-        } else {
-            for (NSString *itemProperty in properties) {
-                if (itemView == [self valueForKey:itemProperty]) {
-                    styleKey = itemProperty;
-                    break;
-                }
-            }
-        }
-        
-        if (styleKey) {
-            NSDictionary *styleDict = [[A_InjuectionManager share] getStyleSetByController:controllerName class:[itemView class] styleKey:styleKey];
-            [itemView setupStyle:styleDict];
-        }
-        
-        if ([itemView subviews] > 0) {
-            [self __loadStyleForViews:[itemView subviews] withControllerName:controllerName properties:properties];
-        }
-    }
-}
+
 - (void)loadStyle {
-    NSArray<NSString *> *properies = [[NSArray alloc] init];
-    if ([[A_InjuectionManager share] loadingType] != InjuectionLoadingType_ViewAndProperty) {
-        properies = [self __searchProperties];
-    }
+//    NSArray<NSString *> *properies = [[NSArray alloc] init];
+//    if ([[A_InjuectionManager share] loadingType] != InjuectionLoadingType_ViewAndProperty) {
+//        properies = [self __searchProperties];
+//    }
+//    
+//    NSString *controllerName = NSStringFromClass([self class]);
+//    
+//    [self __loadStyleForViews:[self.view subviews] withControllerName:controllerName properties:properies];
     
-    NSString *controllerName = NSStringFromClass([self class]);
     
-    [self __loadStyleForViews:[self.view subviews] withControllerName:controllerName properties:properies];
 }
+
 
 +(BOOL)__checkIfObject:(id)object overridesSelector:(SEL)selector {
     Class objSuperClass = [object superclass];

@@ -8,6 +8,8 @@
 
 #import "A_InjuectionManager.h"
 
+
+
 @interface A_InjuectionManager()
 
 @property (nonatomic, strong) NSDictionary *styleSource;
@@ -38,7 +40,7 @@
     self.styleSource = dict;
 }
 
-- (NSDictionary *)getStyleByKeypaths:(NSArray<NSString *> *)keyPaths {
+- (NSDictionary *)getStyleByKeypaths:(NSArray<NSArray<NSString *> *> *)setOfKeyPaths {
     NSDictionary *dict = self.styleSource;
     if (!dict) {
         [self setStyleSourceToPlist:@"StyleSheet"];
@@ -48,36 +50,26 @@
         }
     }
     
-    for (NSString *item in keyPaths) {
-        if (dict && [dict isKindOfClass:[NSDictionary class]]) {
-            dict = ([dict objectForKey:item] ? [dict objectForKey:item] : nil);
-        } else {
-            return @{};
+    NSMutableDictionary *setting = [[NSMutableDictionary alloc] init];
+    for (NSArray<NSString *> *itemKeyPaths in setOfKeyPaths) {
+        NSDictionary *itemDict = dict;
+        for (NSString *itemkey in itemKeyPaths) {
+            if (itemDict && [itemDict isKindOfClass:[NSDictionary class]]) {
+                itemDict = ([itemDict objectForKey:itemkey] ? [itemDict objectForKey:itemkey] : nil);
+            } else {
+                itemDict = nil;
+            }
         }
         
-        if (!dict) {
-            return @{};
+        if (itemDict) {
+            [setting addEntriesFromDictionary:itemDict];
         }
     }
-    
-    if (!dict) {
-        return @{};
-    } else {
-        return [dict copy];
-    }
-}
-
-- (NSDictionary *)getStyleSetByController:(NSString *)controllerName class:(Class)itemClass styleKey:(NSString *)key {
-    NSMutableDictionary *setting = [[NSMutableDictionary alloc] init];
-    
-    // Loading from the path
-    [setting addEntriesFromDictionary: [self getStyleByKeypaths:@[controllerName, key]]];
-    
-    // TODO: Loading global settings
-    // Loading from global
-    //    NSStringFromClass(itemClass)
     
     return setting;
 }
+
+
+
 
 @end
