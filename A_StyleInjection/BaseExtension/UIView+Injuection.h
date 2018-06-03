@@ -15,5 +15,6 @@
 @property (nonatomic, assign) UIViewController *parentController;
 
 - (void)loadStyle:(BOOL)isReloadSubviews;
+- (void)injuectStyle:(id)value tokey:(NSString *)keypath;
 
 @end

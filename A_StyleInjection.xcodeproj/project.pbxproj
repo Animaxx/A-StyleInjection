@@ -16,6 +16,8 @@
 		A983C26A20929966001E0D94 /* UIViewController+Injuection.m in Sources */ = {isa = PBXBuildFile; fileRef = A983C26820929966001E0D94 /* UIViewController+Injuection.m */; };
 		A9C5395B20C3ADAE00EA1747 /* StyleHierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = A9C5395920C3ADAE00EA1747 /* StyleHierarchy.h */; };
 		A9C5395C20C3ADAE00EA1747 /* StyleHierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C5395A20C3ADAE00EA1747 /* StyleHierarchy.m */; };
+		A9C5396420C4839200EA1747 /* StyleNormalizer.h in Headers */ = {isa = PBXBuildFile; fileRef = A9C5396220C4839200EA1747 /* StyleNormalizer.h */; };
+		A9C5396520C4839200EA1747 /* StyleNormalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C5396320C4839200EA1747 /* StyleNormalizer.m */; };
 		A9EF487B20AFE3A5004BE8E8 /* NSDictionary+Injuection.h in Headers */ = {isa = PBXBuildFile; fileRef = A9EF487920AFE3A5004BE8E8 /* NSDictionary+Injuection.h */; };
 		A9EF487C20AFE3A5004BE8E8 /* NSDictionary+Injuection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9EF487A20AFE3A5004BE8E8 /* NSDictionary+Injuection.m */; };
 		A9EF488120AFE677004BE8E8 /* A_ColorHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A9EF487F20AFE677004BE8E8 /* A_ColorHelper.h */; };
@@ -38,6 +40,8 @@
 		A983C26820929966001E0D94 /* UIViewController+Injuection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Injuection.m"; sourceTree = "<group>"; };
 		A9C5395920C3ADAE00EA1747 /* StyleHierarchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StyleHierarchy.h; path = A_StyleInjection/Common/StyleHierarchy.h; sourceTree = SOURCE_ROOT; };
 		A9C5395A20C3ADAE00EA1747 /* StyleHierarchy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StyleHierarchy.m; path = A_StyleInjection/Common/StyleHierarchy.m; sourceTree = SOURCE_ROOT; };
+		A9C5396220C4839200EA1747 /* StyleNormalizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyleNormalizer.h; sourceTree = "<group>"; };
+		A9C5396320C4839200EA1747 /* StyleNormalizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StyleNormalizer.m; sourceTree = "<group>"; };
 		A9EF487920AFE3A5004BE8E8 /* NSDictionary+Injuection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Injuection.h"; sourceTree = "<group>"; };
 		A9EF487A20AFE3A5004BE8E8 /* NSDictionary+Injuection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Injuection.m"; sourceTree = "<group>"; };
 		A9EF487F20AFE677004BE8E8 /* A_ColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A_ColorHelper.h; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 				A9EF488020AFE677004BE8E8 /* A_ColorHelper.m */,
 				A9EF487920AFE3A5004BE8E8 /* NSDictionary+Injuection.h */,
 				A9EF487A20AFE3A5004BE8E8 /* NSDictionary+Injuection.m */,
+				A9C5396220C4839200EA1747 /* StyleNormalizer.h */,
+				A9C5396320C4839200EA1747 /* StyleNormalizer.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -132,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A983C25E209228BD001E0D94 /* A_StyleInjection.h in Headers */,
+				A9C5396420C4839200EA1747 /* StyleNormalizer.h in Headers */,
 				A97D515A20A9140000B2A52A /* A_InjuectionManager.h in Headers */,
 				A9F5D84120BF4192004BC495 /* UITableView+Injuection.h in Headers */,
 				A9EF488120AFE677004BE8E8 /* A_ColorHelper.h in Headers */,
@@ -213,6 +220,7 @@
 				A9F5D84220BF4192004BC495 /* UITableView+Injuection.m in Sources */,
 				A9EF487C20AFE3A5004BE8E8 /* NSDictionary+Injuection.m in Sources */,
 				A9F5D83E20BF2945004BC495 /* UITableViewCell+Injuection.m in Sources */,
+				A9C5396520C4839200EA1747 /* StyleNormalizer.m in Sources */,
 				A9C5395C20C3ADAE00EA1747 /* StyleHierarchy.m in Sources */,
 				A983C26A20929966001E0D94 /* UIViewController+Injuection.m in Sources */,
 				A9EF488220AFE677004BE8E8 /* A_ColorHelper.m in Sources */,

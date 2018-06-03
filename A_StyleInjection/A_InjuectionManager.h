@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, InjuectionLoadingType) {
     InjuectionLoadingType_ViewAndProperty   = 0,
@@ -22,6 +23,6 @@ typedef NS_ENUM(NSUInteger, InjuectionLoadingType) {
 - (void)setStyleSourceToPlist:(NSString *)fileName;
 - (void)setStyleSourceToPlist:(NSString *)fileName withBundle:(NSBundle *)bundle;
 
-- (NSDictionary *)getStyleByKeypaths:(NSArray<NSArray<NSString *> *> *)setOfKeyPaths;
+- (NSDictionary<NSString *, id> *)getNormalizedStyle:(UIView *)view;
 
 @end

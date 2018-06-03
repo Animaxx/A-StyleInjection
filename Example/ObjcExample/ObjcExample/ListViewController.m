@@ -19,6 +19,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIColor *tc = self.label.textColor;
+//    self.label.layer.borderColor
+//    CGColorRef
+//    NSLog(@"%@", tc);
 }
 
 @end

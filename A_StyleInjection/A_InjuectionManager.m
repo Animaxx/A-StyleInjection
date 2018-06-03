@@ -7,8 +7,15 @@
 //
 
 #import "A_InjuectionManager.h"
+#import "UIView+Injuection.h"
+#import "A_ColorHelper.h"
+#import "StyleNormalizer.h"
 
+@interface UIView()
 
+- (UIViewController *)__findParentController;
+
+@end
 
 @interface A_InjuectionManager()
 
@@ -40,7 +47,7 @@
     self.styleSource = dict;
 }
 
-- (NSDictionary *)getStyleByKeypaths:(NSArray<NSArray<NSString *> *> *)setOfKeyPaths {
+- (NSDictionary<NSString *, id> *)getStyleByKeypaths:(NSArray<NSArray<NSString *> *> *)setOfKeyPaths {
     NSDictionary *dict = self.styleSource;
     if (!dict) {
         [self setStyleSourceToPlist:@"StyleSheet"];
@@ -69,7 +76,36 @@
     return setting;
 }
 
-
-
+- (NSDictionary<NSString *, id> *)getNormalizedStyle:(UIView *)view {
+    NSString *className = NSStringFromClass([view class]);
+    NSString *key = [view styleIdentifier];
+    UIViewController *parentController = [view __findParentController];
+    NSString *controllerName = NSStringFromClass([parentController class]);
+    
+    NSMutableArray *setOfPaths = [[NSMutableArray alloc] init];
+    [setOfPaths addObject:@[[NSString stringWithFormat:@"@%@", className]]];
+    [setOfPaths addObject:@[@"GOBAL", [NSString stringWithFormat:@"@%@", className]]];
+    
+    if (key) {
+        [setOfPaths addObject:@[[NSString stringWithFormat:@"#%@", key]]];
+        [setOfPaths addObject:@[@"GOBAL", [NSString stringWithFormat:@"#%@", key]]];
+    }
+    
+    if (controllerName) {
+        [setOfPaths addObject:@[controllerName, [NSString stringWithFormat:@"@%@", className]]];
+        if (key) {
+            [setOfPaths addObject:@[controllerName, [NSString stringWithFormat:@"#%@", key]]];
+        }
+    }
+    
+    NSDictionary<NSString *, id> *styleSetting = [[A_InjuectionManager share] getStyleByKeypaths:setOfPaths];
+    for (NSString *key in [styleSetting allKeys]) {
+        id value = [styleSetting objectForKey:key];
+        value = [StyleNormalizer normaliz:value];
+        [styleSetting setValue:value forKey:key];
+    }
+    
+    return styleSetting;
+}
 
 @end

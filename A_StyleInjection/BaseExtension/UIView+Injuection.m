@@ -44,13 +44,6 @@ static IMP __original_WillMoveToWindow_Method_Imp;
     [self setAssociateValue:vc withKey:kAssociatedParentController type:OBJC_ASSOCIATION_ASSIGN];
 }
 
-//- (NSDictionary *)styleSettingDict {
-//    return [self fetchAssociateValue:kAssociatedViewSettingDict];
-//}
-//- (void)setStyleSettingDict:(NSDictionary *)value {
-//    [self setAssociateValue:value withKey:kAssociatedViewSettingDict];
-//}
-
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -64,7 +57,7 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
 }
 
 - (void)loadStyle:(BOOL)isReloadSubviews {
-    NSDictionary<NSString *, id> *setting = [self __getStyleSetting];
+    NSDictionary<NSString *, id> *setting = [[A_InjuectionManager share] getNormalizedStyle:self];
     if (setting) {
         [self __setupStyle:setting];
     }
@@ -80,8 +73,6 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
     if ([self parentController]) {
         return [self parentController];
     } else {
-//        NSMutableArray *hierarchy = [[NSMutableArray alloc] init];
-        
         for (UIView* next = [self superview]; next; next = next.superview) {
             UIResponder* nextResponder = [next nextResponder];
             
@@ -96,42 +87,15 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
     return nil;
 }
 
-- (NSDictionary<NSString *, id> *)__getStyleSetting {
-    NSString *className = NSStringFromClass([self class]);
-    NSString *key = [self styleIdentifier];
-    UIViewController *parentController = [self __findParentController];
-    NSString *controllerName = NSStringFromClass([parentController class]);
-    
-    NSMutableArray *setOfPaths = [[NSMutableArray alloc] init];
-    [setOfPaths addObject:@[[NSString stringWithFormat:@"@%@", className]]];
-    [setOfPaths addObject:@[@"GOBAL", [NSString stringWithFormat:@"@%@", className]]];
-    
-    if (key) {
-        [setOfPaths addObject:@[[NSString stringWithFormat:@"#%@", key]]];
-        [setOfPaths addObject:@[@"GOBAL", [NSString stringWithFormat:@"#%@", key]]];
-    }
-    
-    if (controllerName) {
-        [setOfPaths addObject:@[controllerName, [NSString stringWithFormat:@"@%@", className]]];
-        if (key) {
-            [setOfPaths addObject:@[controllerName, [NSString stringWithFormat:@"#%@", key]]];
-        }
-    }
-    
-    return [[A_InjuectionManager share] getStyleByKeypaths:setOfPaths];
-}
 - (void)__setupStyle:(NSDictionary *)setting {
     for (NSString *key in setting) {
         id itemValue = [setting objectForKey:key];
-        if ([setting isColorFormat:key]) {
-            itemValue = [setting convertToColor:key];
-        }
-        
-        [self setValue:itemValue forKeyPath:key];
+        [self injuectStyle:itemValue tokey:key];
     }
-
-    NSLog(@"Run setup style");
 }
 
+- (void)injuectStyle:(id)value tokey:(NSString *)keypath {
+    [self setValue:value forKey:keypath];
+}
 
 @end
