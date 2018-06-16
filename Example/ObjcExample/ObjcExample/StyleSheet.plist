@@ -7,8 +7,23 @@
 		<key>textColor</key>
 		<string>#FFFF00</string>
 	</dict>
+	<key>UINavigationBar</key>
+	<dict>
+		<key>barTintColor</key>
+		<string>#000000</string>
+	</dict>
 	<key>UINavigationController</key>
 	<dict>
+		<key>@UINavigationBar</key>
+		<dict>
+			<key>barTintColor</key>
+			<string>#000000</string>
+		</dict>
+		<key>@UIView</key>
+		<dict>
+			<key>backgroundColor</key>
+			<string>#000000</string>
+		</dict>
 		<key>@UILabel</key>
 		<dict>
 			<key>textColor</key>
@@ -20,7 +35,7 @@
 		<key>@UILabel</key>
 		<dict>
 			<key>font</key>
-			<string>$&quot;Helvetica Neue&quot;:23</string>
+			<string>$&quot;Helvetica Neue&quot;:50</string>
 			<key>text</key>
 			<string>Test Text</string>
 			<key>textColor</key>
@@ -28,6 +43,8 @@
 		</dict>
 		<key>#demo1</key>
 		<dict>
+			<key>font</key>
+			<string>$&quot;Helvetica Neue&quot;:20</string>
 			<key>layer.cornerRadius</key>
 			<string>10</string>
 			<key>backgroundColor</key>

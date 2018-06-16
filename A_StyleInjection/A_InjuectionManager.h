@@ -24,5 +24,6 @@ typedef NS_ENUM(NSUInteger, InjuectionLoadingType) {
 - (void)setStyleSourceToPlist:(NSString *)fileName withBundle:(NSBundle *)bundle;
 
 - (NSDictionary<NSString *, id> *)getNormalizedStyle:(UIView *)view;
+- (NSDictionary<NSString *, id> *)getStyleByKeypaths:(NSArray<NSArray<NSString *> *> *)setOfKeyPaths;
 
 @end
