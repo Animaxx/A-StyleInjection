@@ -19,6 +19,8 @@
 	<dict>
 		<key>@UILabel</key>
 		<dict>
+			<key>font</key>
+			<string>$&quot;Helvetica Neue&quot;:23</string>
 			<key>text</key>
 			<string>Test Text</string>
 			<key>textColor</key>

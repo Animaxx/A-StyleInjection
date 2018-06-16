@@ -10,6 +10,6 @@
 
 @interface StyleNormalizer : NSObject
 
-+ (id)normaliz:(id)rawValue;
++ (id)normalize:(id)rawValue;
 
 @end

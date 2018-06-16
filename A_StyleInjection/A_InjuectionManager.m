@@ -101,7 +101,7 @@
     NSDictionary<NSString *, id> *styleSetting = [[A_InjuectionManager share] getStyleByKeypaths:setOfPaths];
     for (NSString *key in [styleSetting allKeys]) {
         id value = [styleSetting objectForKey:key];
-        value = [StyleNormalizer normaliz:value];
+        value = [StyleNormalizer normalize:value];
         [styleSetting setValue:value forKey:key];
     }
     

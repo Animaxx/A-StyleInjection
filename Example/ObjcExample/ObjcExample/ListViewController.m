@@ -12,18 +12,14 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
-
 @end
 
 @implementation ListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIColor *tc = self.label.textColor;
-//    self.label.layer.borderColor
-//    CGColorRef
-//    NSLog(@"%@", tc);
+//    [self.label setFont:[UIFont fontWithName:@"Helvetica Neue" size:50]];
+//    self.label.font = [UIFont fontWithName:@"Helvetica Neue" size:50];
 }
 
 @end

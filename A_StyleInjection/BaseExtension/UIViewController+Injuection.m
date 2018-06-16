@@ -25,10 +25,7 @@ static IMP __original_ViewDidLoad_Method_Imp;
 
 void __A_InjuectionViewDidLoad (id self,SEL _cmd) {
     NSString* name = NSStringFromClass(object_getClass(self));
-    NSLog(@"InjuectionViewDidLoad %@", name);
-    
     [self __setSubviewsParams:[[self view] subviews]];
-    
     ((void(*)(id,SEL))__original_ViewDidLoad_Method_Imp)(self, _cmd);
 }
 - (NSArray<NSString *> *)__searchProperties {

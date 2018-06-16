@@ -8,28 +8,49 @@
 
 #import "StyleNormalizer.h"
 #import "A_ColorHelper.h"
+#import "NSString+Regex.h"
 
 @implementation StyleNormalizer
 
-+ (id)normaliz:(id)rawValue {
-    id output = rawValue;
-    output = [StyleNormalizer convertColor:output];
++ (id)normalize:(id)rawValue {
+    if (![rawValue isKindOfClass:[NSString class]]) {
+        return rawValue;
+    }
     
-    return output;
+    id output = nil;
+    
+    output = [StyleNormalizer convertColor:rawValue];
+    if (output) { return output; }
+    
+    output = [StyleNormalizer convertFont:rawValue];
+    if (output) { return output; }
+    
+    return rawValue;
 }
 
 + (id)convertColor:(NSString *)inputValue {
-    if (![inputValue isKindOfClass:[NSString class]]) {
-        return inputValue;
-    }
-    
-    NSString *regex = @"^#(\\d|[A-F]){6}$";
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-    if ([predicate evaluateWithObject:inputValue]) {
+    //color format example: #00000
+    if ([inputValue matchRegexFormat:@"^#(\\d|[A-F]){6}$"]) {
         return [A_ColorHelper A_ColorMakeFormString:inputValue];
     }
-    
-    return inputValue;
+    return nil;
 }
++ (id)convertFont:(NSString *)inputValue {
+    //font format example: $"Helvetica Neue":17
+    if ([inputValue matchRegexFormat:@"^\\$\\\"[a-zA-z ]+\\\"\\:[0-9]*$"]) {
+        NSString *fontNameStr = [inputValue extractFirstRegex:@"^\\$\\\"([a-zA-Z ]+)\\\""];
+        NSString *fontSizeStr = [inputValue extractFirstRegex:@":([0-9]*)$"];
+        
+        if (fontNameStr && fontSizeStr) {
+            UIFont *font = [UIFont fontWithName:fontNameStr size:[fontSizeStr floatValue]];
+            if (font) {
+                return font;
+            }
+        }
+    }
+    
+    return nil;
+}
+
 
 @end
