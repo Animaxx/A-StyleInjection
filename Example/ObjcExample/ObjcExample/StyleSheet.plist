@@ -36,8 +36,6 @@
 		<dict>
 			<key>font</key>
 			<string>$&quot;Helvetica Neue&quot;:50</string>
-			<key>text</key>
-			<string>Test Text</string>
 			<key>textColor</key>
 			<string>#0000FF</string>
 		</dict>
@@ -50,6 +48,11 @@
 			<key>backgroundColor</key>
 			<string>#CCBBDD</string>
 		</dict>
+	</dict>
+	<key>SimpleButtonDemoController</key>
+	<dict>
+		<key>#theButton</key>
+		<dict/>
 	</dict>
 </dict>
 </plist>

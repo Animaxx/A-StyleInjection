@@ -14,7 +14,9 @@
 @property (nonatomic, assign) IBInspectable NSString *styleIdentifier;
 @property (nonatomic, assign) UIViewController *parentController;
 
-- (void)loadStyle:(BOOL)isReloadSubviews;
+@property (nonatomic, readonly) BOOL isStyleApplied;
+
+- (void)loadStyle:(BOOL)isReloadSubviews forceReload:(BOOL)forceReload;
 - (void)injuectStyle:(id)value tokey:(NSString *)keypath;
 
 @end

@@ -17,11 +17,13 @@
 
 #define kAssociatedViewSettingDict  @"AssociatedViewSettingDict"
 #define kAssociatedParentController @"AssociatedParentController"
+#define kAssociatedIsStyleApplied   @"AssociatedisStyleApplied"
 
-@dynamic styleIdentifier, parentController;
+@dynamic styleIdentifier, parentController, isStyleApplied;
 
 static IMP __original_WillMoveToWindow_Method_Imp;
 
+#pragma mark - Associate values
 - (id)fetchAssociateValue:(NSString *)key {
     NSString *value = objc_getAssociatedObject(self, @selector(key));
     return value;
@@ -43,20 +45,48 @@ static IMP __original_WillMoveToWindow_Method_Imp;
 - (void)setParentController:(UIViewController *)vc {
     [self setAssociateValue:vc withKey:kAssociatedParentController type:OBJC_ASSOCIATION_ASSIGN];
 }
+- (BOOL)isStyleApplied {
+    id value = [self fetchAssociateValue:kStyleIdentifier];
+    return value ? [value boolValue] : NO;
+}
+
 
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        __original_WillMoveToWindow_Method_Imp = method_setImplementation(class_getInstanceMethod([self class],@selector(didMoveToWindow)),(IMP)__A_InjuectionDidMoveToWindow);
+        
+        Class selfCls = [self class];
+        SEL selector = @selector(didMoveToWindow);
+        IMP replaceImpMethod = (IMP)__A_InjuectionDidMoveToWindow;
+        
+        Method originalMethod = class_getInstanceMethod(selfCls, selector);
+        
+        IMP originalMethodImpl = nil;
+        if( originalMethod ) {
+            const char* methodTypes = method_getTypeEncoding(originalMethod);
+            originalMethodImpl = class_replaceMethod(selfCls, selector, replaceImpMethod, methodTypes);
+            if( !originalMethodImpl ) {
+                originalMethodImpl = method_getImplementation(originalMethod);
+            }
+        }
+        
+        if (originalMethodImpl) {
+            __original_WillMoveToWindow_Method_Imp = originalMethodImpl;
+        }
     });
 }
 
 void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
-    [self loadStyle:NO];
+    [self loadStyle:YES forceReload:NO];
+    
     ((void(*)(id,SEL))__original_WillMoveToWindow_Method_Imp)(self, _cmd);
 }
 
-- (void)loadStyle:(BOOL)isReloadSubviews {
+- (void)loadStyle:(BOOL)isReloadSubviews forceReload:(BOOL)forceReload {
+    if (!forceReload && [self isStyleApplied]) {
+        return;
+    }
+    
     NSDictionary<NSString *, id> *setting = [[A_InjuectionManager share] getNormalizedStyle:self];
     if (setting) {
         [self __setupStyle:setting];
@@ -64,7 +94,7 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
     
     if (isReloadSubviews) {
         for (UIView *subview in [self subviews]) {
-            [subview loadStyle:isReloadSubviews];
+            [subview loadStyle:isReloadSubviews forceReload:forceReload];
         }
     }
 }

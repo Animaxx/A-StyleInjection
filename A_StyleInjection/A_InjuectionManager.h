@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, InjuectionLoadingType) {
 @interface A_InjuectionManager : NSObject
 
 @property(nonatomic) InjuectionLoadingType loadingType;
+
 + (A_InjuectionManager *)share;
 
 - (void)setStyleSourceToDict:(NSDictionary *)dict;
