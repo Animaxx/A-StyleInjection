@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -119,17 +120,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfr-CK-Eju">
+                                <rect key="frame" x="36" y="123" width="303" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3Nq-e7-Cui"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleIdentifier" value="theButton"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="jfr-CK-Eju" secondAttribute="trailing" constant="20" id="77E-Oh-gnk"/>
+                            <constraint firstItem="jfr-CK-Eju" firstAttribute="leading" secondItem="46H-Xl-VIM" secondAttribute="leadingMargin" constant="20" id="BoN-DH-Cak"/>
                             <constraint firstItem="d5k-Rn-How" firstAttribute="leading" secondItem="46H-Xl-VIM" secondAttribute="leading" constant="15" id="WJb-Oz-Xaq"/>
                             <constraint firstAttribute="trailing" secondItem="d5k-Rn-How" secondAttribute="trailing" constant="15" id="aGf-Qk-Mup"/>
                             <constraint firstItem="d5k-Rn-How" firstAttribute="top" secondItem="ZLr-EL-O40" secondAttribute="bottom" constant="30" id="cV1-ZC-avg"/>
+                            <constraint firstItem="jfr-CK-Eju" firstAttribute="top" secondItem="d5k-Rn-How" secondAttribute="bottom" constant="8" id="maF-B7-r97"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Simple Button Demo" id="iMx-Nx-er5"/>
                     <connections>
                         <outlet property="simpleLabel" destination="d5k-Rn-How" id="TDm-bt-cjt"/>
+                        <outlet property="theButton" destination="jfr-CK-Eju" id="M0Y-Sh-aWw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzC-Eb-dKy" userLabel="First Responder" sceneMemberID="firstResponder"/>

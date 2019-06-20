@@ -18,8 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self.label setFont:[UIFont fontWithName:@"Helvetica Neue" size:50]];
-//    self.label.font = [UIFont fontWithName:@"Helvetica Neue" size:50];
 }
 
 @end
