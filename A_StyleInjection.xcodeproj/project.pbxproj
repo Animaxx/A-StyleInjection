@@ -12,8 +12,6 @@
 		A97D515E20A9366400B2A52A /* UIView+Injuection.h in Headers */ = {isa = PBXBuildFile; fileRef = A97D515C20A9366400B2A52A /* UIView+Injuection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A97D515F20A9366400B2A52A /* UIView+Injuection.m in Sources */ = {isa = PBXBuildFile; fileRef = A97D515D20A9366400B2A52A /* UIView+Injuection.m */; };
 		A983C25E209228BD001E0D94 /* A_StyleInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = A983C25C209228BD001E0D94 /* A_StyleInjection.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A983C26920929966001E0D94 /* UIViewController+Injuection.h in Headers */ = {isa = PBXBuildFile; fileRef = A983C26720929966001E0D94 /* UIViewController+Injuection.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A983C26A20929966001E0D94 /* UIViewController+Injuection.m in Sources */ = {isa = PBXBuildFile; fileRef = A983C26820929966001E0D94 /* UIViewController+Injuection.m */; };
 		A9C5395B20C3ADAE00EA1747 /* StyleHierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = A9C5395920C3ADAE00EA1747 /* StyleHierarchy.h */; };
 		A9C5395C20C3ADAE00EA1747 /* StyleHierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C5395A20C3ADAE00EA1747 /* StyleHierarchy.m */; };
 		A9C5396420C4839200EA1747 /* StyleNormalizer.h in Headers */ = {isa = PBXBuildFile; fileRef = A9C5396220C4839200EA1747 /* StyleNormalizer.h */; };
@@ -38,8 +36,6 @@
 		A983C259209228BD001E0D94 /* A_StyleInjection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = A_StyleInjection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A983C25C209228BD001E0D94 /* A_StyleInjection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = A_StyleInjection.h; sourceTree = "<group>"; };
 		A983C25D209228BD001E0D94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A983C26720929966001E0D94 /* UIViewController+Injuection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Injuection.h"; sourceTree = "<group>"; };
-		A983C26820929966001E0D94 /* UIViewController+Injuection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Injuection.m"; sourceTree = "<group>"; };
 		A9C5395920C3ADAE00EA1747 /* StyleHierarchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StyleHierarchy.h; path = A_StyleInjection/Common/StyleHierarchy.h; sourceTree = SOURCE_ROOT; };
 		A9C5395A20C3ADAE00EA1747 /* StyleHierarchy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StyleHierarchy.m; path = A_StyleInjection/Common/StyleHierarchy.m; sourceTree = SOURCE_ROOT; };
 		A9C5396220C4839200EA1747 /* StyleNormalizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyleNormalizer.h; sourceTree = "<group>"; };
@@ -119,8 +115,6 @@
 			children = (
 				A97D515C20A9366400B2A52A /* UIView+Injuection.h */,
 				A97D515D20A9366400B2A52A /* UIView+Injuection.m */,
-				A983C26720929966001E0D94 /* UIViewController+Injuection.h */,
-				A983C26820929966001E0D94 /* UIViewController+Injuection.m */,
 			);
 			path = BaseExtension;
 			sourceTree = "<group>";
@@ -151,7 +145,6 @@
 				A97D515E20A9366400B2A52A /* UIView+Injuection.h in Headers */,
 				A9EAD53D20D5A78400598AA7 /* NSString+Regex.h in Headers */,
 				A9C5395B20C3ADAE00EA1747 /* StyleHierarchy.h in Headers */,
-				A983C26920929966001E0D94 /* UIViewController+Injuection.h in Headers */,
 				A9EF487B20AFE3A5004BE8E8 /* NSDictionary+Injuection.h in Headers */,
 				A9F5D83D20BF2945004BC495 /* UITableViewCell+Injuection.h in Headers */,
 			);
@@ -230,7 +223,6 @@
 				A9EAD53E20D5A78400598AA7 /* NSString+Regex.m in Sources */,
 				A9C5396520C4839200EA1747 /* StyleNormalizer.m in Sources */,
 				A9C5395C20C3ADAE00EA1747 /* StyleHierarchy.m in Sources */,
-				A983C26A20929966001E0D94 /* UIViewController+Injuection.m in Sources */,
 				A9EF488220AFE677004BE8E8 /* A_ColorHelper.m in Sources */,
 				A97D515F20A9366400B2A52A /* UIView+Injuection.m in Sources */,
 				A97D515B20A9140000B2A52A /* A_InjuectionManager.m in Sources */,
