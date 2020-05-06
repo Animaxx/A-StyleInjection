@@ -10,7 +10,7 @@
 
 @interface StyleHierarchy : NSObject
 
-@property (nonatomic, strong) NSString *styleIdentifier;
-@property (nonatomic, strong) NSString *controlviewClassName;
+@property (nonatomic, strong, nonnull) NSString *styleIdentifier;
+@property (nonatomic, strong, nonnull) NSString *controlviewClassName;
 
 @end

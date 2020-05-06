@@ -80,6 +80,10 @@
     NSString *className = NSStringFromClass([view class]);
     NSString *key = [view styleIdentifier];
     UIViewController *parentController = [view __findParentController];
+    if (!parentController) {
+        return @{};
+    }
+    
     NSString *controllerName = NSStringFromClass([parentController class]);
     
     NSMutableArray *setOfPaths = [[NSMutableArray alloc] init];

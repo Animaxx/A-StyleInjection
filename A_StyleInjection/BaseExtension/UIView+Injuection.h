@@ -11,12 +11,12 @@
 
 @interface UIView(Injuection)
 
-@property (nonatomic, assign) IBInspectable NSString *styleIdentifier;
-@property (nonatomic, assign) UIViewController *parentController;
+@property (nonatomic, assign, nullable) IBInspectable  NSString *styleIdentifier;
+@property (nonatomic, assign, nullable) UIViewController *parentController;
 
 @property (nonatomic, readonly) BOOL isStyleApplied;
 
 - (void)loadStyle:(BOOL)isReloadSubviews forceReload:(BOOL)forceReload;
-- (void)injuectStyle:(id)value tokey:(NSString *)keypath;
+- (void)injuectStyle:(id _Nonnull)value tokey:(NSString * _Nonnull)keypath;
 
 @end

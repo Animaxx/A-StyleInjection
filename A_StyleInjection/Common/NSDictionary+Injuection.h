@@ -11,7 +11,7 @@
 
 @interface NSDictionary(Injuection)
 
-- (UIColor *)convertToColor:(NSString *)key;
-- (BOOL)isColorFormat:(NSString *)key;
+- (UIColor * _Nullable)convertToColor:(NSString * _Nonnull)key;
+- (BOOL)isColorFormat:(NSString * _Nonnull)key;
 
 @end

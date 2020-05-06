@@ -18,13 +18,13 @@ typedef NS_ENUM(NSUInteger, InjuectionLoadingType) {
 
 @property(nonatomic) InjuectionLoadingType loadingType;
 
-+ (A_InjuectionManager *)share;
++ (A_InjuectionManager * _Nonnull)share;
 
-- (void)setStyleSourceToDict:(NSDictionary *)dict;
-- (void)setStyleSourceToPlist:(NSString *)fileName;
-- (void)setStyleSourceToPlist:(NSString *)fileName withBundle:(NSBundle *)bundle;
+- (void)setStyleSourceToDict:(NSDictionary * _Nonnull)dict;
+- (void)setStyleSourceToPlist:(NSString * _Nonnull)fileName;
+- (void)setStyleSourceToPlist:(NSString * _Nonnull)fileName withBundle:(NSBundle * _Nonnull)bundle;
 
-- (NSDictionary<NSString *, id> *)getNormalizedStyle:(UIView *)view;
-- (NSDictionary<NSString *, id> *)getStyleByKeypaths:(NSArray<NSArray<NSString *> *> *)setOfKeyPaths;
+- (NSDictionary<NSString *, id> * _Nonnull)getNormalizedStyle:(UIView * _Nonnull)view;
+- (NSDictionary<NSString *, id> * _Nonnull)getStyleByKeypaths:(NSArray<NSArray<NSString *> *> * _Nonnull)setOfKeyPaths;
 
 @end

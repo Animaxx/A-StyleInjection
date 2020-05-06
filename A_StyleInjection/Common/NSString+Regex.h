@@ -10,7 +10,7 @@
 
 @interface NSString (Regex)
 
-- (BOOL)matchRegexFormat:(NSString *)regex;
-- (NSString *)extractFirstRegex:(NSString *)regex;
+- (BOOL)matchRegexFormat:(NSString * _Nonnull)regex;
+- (NSString * _Nullable)extractFirstRegex:(NSString * _Nonnull)regex;
 
 @end

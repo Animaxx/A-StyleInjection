@@ -11,7 +11,7 @@
 
 @interface A_ColorHelper : NSObject
 
-+ (UIColor*) MakeColorByR:(NSInteger)r G:(NSInteger)g B:(NSInteger)b;
-+ (UIColor*) A_ColorMakeFormString:(NSString*) str;
++ (UIColor* _Nonnull) MakeColorByR:(NSInteger)r G:(NSInteger)g B:(NSInteger)b;
++ (UIColor* _Nullable) A_ColorMakeFormString:(NSString* _Nonnull) str;
 
 @end

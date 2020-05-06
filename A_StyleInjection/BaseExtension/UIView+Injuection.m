@@ -13,43 +13,39 @@
 
 @implementation UIView(Injuection)
 
-#define kStyleIdentifier            @"AssociatedStyleIdentifier"
-
-#define kAssociatedViewSettingDict  @"AssociatedViewSettingDict"
-#define kAssociatedParentController @"AssociatedParentController"
-#define kAssociatedIsStyleApplied   @"AssociatedisStyleApplied"
+static char *viewStyleIdentifier = "aAssociatedStyleIdentifier";
+static char *viewParentController = "aAssociatedParentController";
 
 @dynamic styleIdentifier, parentController, isStyleApplied;
 
 static IMP __original_WillMoveToWindow_Method_Imp;
 
 #pragma mark - Associate values
-- (id)fetchAssociateValue:(NSString *)key {
-    NSString *value = objc_getAssociatedObject(self, @selector(key));
+- (id)fetchAssociateValue:(char *)key {
+    id value = objc_getAssociatedObject(self, key);
     return value;
 }
-- (void)setAssociateValue:(id)value withKey:(NSString *)key type:(objc_AssociationPolicy)policyType {
-    objc_setAssociatedObject(self, @selector(key), value, policyType);
+- (void)setAssociateValue:(id)value withKey:(char *)key type:(objc_AssociationPolicy)policyType {
+    objc_setAssociatedObject(self, key, value, policyType);
 }
 
 - (NSString *)styleIdentifier {
-    return [self fetchAssociateValue:kStyleIdentifier];
+    return [self fetchAssociateValue:viewStyleIdentifier];
 }
 - (void)setStyleIdentifier:(NSString *)value {
-    [self setAssociateValue:value withKey:kStyleIdentifier type:OBJC_ASSOCIATION_COPY_NONATOMIC];
+    [self setAssociateValue:value withKey:viewStyleIdentifier type:OBJC_ASSOCIATION_COPY_NONATOMIC];
 }
 
 - (UIViewController *)parentController {
-    return [self fetchAssociateValue:kAssociatedParentController];
+    return [self fetchAssociateValue:viewParentController];
 }
 - (void)setParentController:(UIViewController *)vc {
-    [self setAssociateValue:vc withKey:kAssociatedParentController type:OBJC_ASSOCIATION_ASSIGN];
+    [self setAssociateValue:vc withKey:viewParentController type:OBJC_ASSOCIATION_ASSIGN];
 }
 - (BOOL)isStyleApplied {
-    id value = [self fetchAssociateValue:kStyleIdentifier];
-    return value ? [value boolValue] : NO;
+    id value = [self fetchAssociateValue:viewStyleIdentifier];
+    return value && [value isKindOfClass:[NSString class]];
 }
-
 
 + (void)load {
     static dispatch_once_t onceToken;
@@ -58,9 +54,9 @@ static IMP __original_WillMoveToWindow_Method_Imp;
         Class selfCls = [self class];
         SEL selector = @selector(didMoveToWindow);
         IMP replaceImpMethod = (IMP)__A_InjuectionDidMoveToWindow;
-        
+
         Method originalMethod = class_getInstanceMethod(selfCls, selector);
-        
+
         IMP originalMethodImpl = nil;
         if( originalMethod ) {
             const char* methodTypes = method_getTypeEncoding(originalMethod);
@@ -69,7 +65,7 @@ static IMP __original_WillMoveToWindow_Method_Imp;
                 originalMethodImpl = method_getImplementation(originalMethod);
             }
         }
-        
+
         if (originalMethodImpl) {
             __original_WillMoveToWindow_Method_Imp = originalMethodImpl;
         }
@@ -79,7 +75,9 @@ static IMP __original_WillMoveToWindow_Method_Imp;
 void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
     [self loadStyle:YES forceReload:NO];
     
-    ((void(*)(id,SEL))__original_WillMoveToWindow_Method_Imp)(self, _cmd);
+    if (__original_WillMoveToWindow_Method_Imp) {
+        ((void(*)(id,SEL))__original_WillMoveToWindow_Method_Imp)(self, _cmd);
+    }
 }
 
 - (void)loadStyle:(BOOL)isReloadSubviews forceReload:(BOOL)forceReload {
@@ -103,14 +101,13 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
     if ([self parentController]) {
         return [self parentController];
     } else {
-        for (UIView* next = [self superview]; next; next = next.superview) {
-            UIResponder* nextResponder = [next nextResponder];
-            
-            if ([nextResponder isKindOfClass:[UIViewController class]]) {
-                UIViewController *parent = (UIViewController*)nextResponder;
-                [self setParentController:parent];
-                return parent;
-            }
+        UIResponder *responder = self;
+        while ([responder isKindOfClass:[UIView class]])
+            responder = [responder nextResponder];
+        
+        if (responder && [responder isKindOfClass:[UIViewController class]]) {
+            [self setParentController:(UIViewController *)responder];
+            return (UIViewController *)responder;
         }
     }
     

@@ -19,7 +19,6 @@
 }
 
 - (void)layoutSubviews {
-    NSLog(@"layout");
 }
 
 @end
