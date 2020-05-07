@@ -10,6 +10,7 @@
 #import "UIView+Injuection.h"
 #import "A_ColorHelper.h"
 #import "StyleNormalizer.h"
+#import "PlistStyleSourceProvider.h"
 
 @interface UIView()
 
@@ -19,13 +20,14 @@
 
 @interface A_InjuectionManager()
 
-@property (nonatomic, strong) NSDictionary *styleSource;
+//@property (nonatomic, strong) NSDictionary *styleSource;
+@property (nonatomic, strong) id<InjectionStyleSourceRepository> repository;
 
 @end
 
 @implementation A_InjuectionManager
 
-+ (A_InjuectionManager *)share {
++ (A_InjuectionManager *)shared {
     static dispatch_once_t pred = 0;
     __strong static A_InjuectionManager *obj = nil;
     dispatch_once(&pred, ^{
@@ -35,45 +37,18 @@
     return obj;
 }
 
-- (void)setStyleSourceToDict:(NSDictionary *)dict {
-    self.styleSource = [dict copy];
-}
-- (void)setStyleSourceToPlist:(NSString *)fileName {
-    [self setStyleSourceToPlist:fileName withBundle:[NSBundle mainBundle]];
-}
-- (void)setStyleSourceToPlist:(NSString *)fileName withBundle:(NSBundle *)bundle {
-    NSString *path = [bundle pathForResource:fileName ofType: @"plist"];
-    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
-    self.styleSource = dict;
-}
-
-- (NSDictionary<NSString *, id> *)getStyleByKeypaths:(NSArray<NSArray<NSString *> *> *)setOfKeyPaths {
-    NSDictionary *dict = self.styleSource;
-    if (!dict) {
-        [self setStyleSourceToPlist:@"StyleSheet"];
-        dict = self.styleSource;
-        if (!dict) {
-            return @{};
-        }
+- (void)setStyleSourceRepository:(id<InjectionStyleSourceRepository> _Nonnull) source {
+    @synchronized (self) {
+        self.repository = source;
     }
-    
-    NSMutableDictionary *setting = [[NSMutableDictionary alloc] init];
-    for (NSArray<NSString *> *itemKeyPaths in setOfKeyPaths) {
-        NSDictionary *itemDict = dict;
-        for (NSString *itemkey in itemKeyPaths) {
-            if (itemDict && [itemDict isKindOfClass:[NSDictionary class]]) {
-                itemDict = ([itemDict objectForKey:itemkey] ? [itemDict objectForKey:itemkey] : nil);
-            } else {
-                itemDict = nil;
-            }
+}
+- (id<InjectionStyleSourceRepository>) getSourceRepository {
+    @synchronized (self) {
+        if (!self.repository) {
+            self.repository = [[PlistStyleSourceProvider alloc] init:@"StyleSheet"];
         }
-        
-        if (itemDict) {
-            [setting addEntriesFromDictionary:itemDict];
-        }
+        return self.repository;
     }
-    
-    return setting;
 }
 
 - (NSDictionary<NSString *, id> *)getNormalizedStyle:(UIView *)view {
@@ -86,23 +61,24 @@
     
     NSString *controllerName = NSStringFromClass([parentController class]);
     
-    NSMutableArray *setOfPaths = [[NSMutableArray alloc] init];
-    [setOfPaths addObject:@[[NSString stringWithFormat:@"@%@", className]]];
-    [setOfPaths addObject:@[@"GOBAL", [NSString stringWithFormat:@"@%@", className]]];
+    NSMutableArray *stylePaths = [[NSMutableArray alloc] init];
+    [stylePaths addObject:@[[NSString stringWithFormat:@"@%@", className]]];
+    [stylePaths addObject:@[@"GOBAL", [NSString stringWithFormat:@"@%@", className]]];
     
     if (key) {
-        [setOfPaths addObject:@[[NSString stringWithFormat:@"#%@", key]]];
-        [setOfPaths addObject:@[@"GOBAL", [NSString stringWithFormat:@"#%@", key]]];
+        [stylePaths addObject:@[[NSString stringWithFormat:@"#%@", key]]];
+        [stylePaths addObject:@[@"GOBAL", [NSString stringWithFormat:@"#%@", key]]];
     }
     
     if (controllerName) {
-        [setOfPaths addObject:@[controllerName, [NSString stringWithFormat:@"@%@", className]]];
+        [stylePaths addObject:@[controllerName, [NSString stringWithFormat:@"@%@", className]]];
         if (key) {
-            [setOfPaths addObject:@[controllerName, [NSString stringWithFormat:@"#%@", key]]];
+            [stylePaths addObject:@[controllerName, [NSString stringWithFormat:@"#%@", key]]];
         }
     }
     
-    NSDictionary<NSString *, id> *styleSetting = [[A_InjuectionManager share] getStyleByKeypaths:setOfPaths];
+    NSDictionary<NSString *, id> *styleSetting = [[self getSourceRepository] getStyleByKeypaths:stylePaths];
+    
     for (NSString *key in [styleSetting allKeys]) {
         id value = [styleSetting objectForKey:key];
         value = [StyleNormalizer normalize:value];

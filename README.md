@@ -1,12 +1,13 @@
 # A-StyleInjection
 
+**A Style Injection** provide the injection way to customize whole iOS application base on the single configuration file.
 
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/Animaxx/A-StyleInjection.svg?columns=all)](https://waffle.io/Animaxx/A-StyleInjection)
 
-**A Style Injection** is an open source library provide the way to custom your iOS application without rewrite whole project.
 
 ## Installation
 Cocoa Pod install
+
+
 
 ## Usage Example
 1. Setup the style name for your special contols.

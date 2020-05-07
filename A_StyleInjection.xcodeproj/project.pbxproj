@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A95491A824636DB600983A29 /* PlistStyleSourceProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = A95491A624636DB600983A29 /* PlistStyleSourceProvider.h */; };
+		A95491A924636DB600983A29 /* PlistStyleSourceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A95491A724636DB600983A29 /* PlistStyleSourceProvider.m */; };
 		A97D515A20A9140000B2A52A /* A_InjuectionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A97D515820A9140000B2A52A /* A_InjuectionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A97D515B20A9140000B2A52A /* A_InjuectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A97D515920A9140000B2A52A /* A_InjuectionManager.m */; };
 		A97D515E20A9366400B2A52A /* UIView+Injuection.h in Headers */ = {isa = PBXBuildFile; fileRef = A97D515C20A9366400B2A52A /* UIView+Injuection.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -22,13 +24,14 @@
 		A9EF487C20AFE3A5004BE8E8 /* NSDictionary+Injuection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9EF487A20AFE3A5004BE8E8 /* NSDictionary+Injuection.m */; };
 		A9EF488120AFE677004BE8E8 /* A_ColorHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A9EF487F20AFE677004BE8E8 /* A_ColorHelper.h */; };
 		A9EF488220AFE677004BE8E8 /* A_ColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9EF488020AFE677004BE8E8 /* A_ColorHelper.m */; };
-		A9F5D83D20BF2945004BC495 /* UITableViewCell+Injuection.h in Headers */ = {isa = PBXBuildFile; fileRef = A9F5D83B20BF2945004BC495 /* UITableViewCell+Injuection.h */; };
-		A9F5D83E20BF2945004BC495 /* UITableViewCell+Injuection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F5D83C20BF2945004BC495 /* UITableViewCell+Injuection.m */; };
 		A9F5D84120BF4192004BC495 /* UITableView+Injuection.h in Headers */ = {isa = PBXBuildFile; fileRef = A9F5D83F20BF4192004BC495 /* UITableView+Injuection.h */; };
 		A9F5D84220BF4192004BC495 /* UITableView+Injuection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F5D84020BF4192004BC495 /* UITableView+Injuection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A95491A624636DB600983A29 /* PlistStyleSourceProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlistStyleSourceProvider.h; sourceTree = "<group>"; };
+		A95491A724636DB600983A29 /* PlistStyleSourceProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlistStyleSourceProvider.m; sourceTree = "<group>"; };
+		A95491AA24636E3000983A29 /* InjectionStyleSourceRepository.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InjectionStyleSourceRepository.h; sourceTree = "<group>"; };
 		A97D515820A9140000B2A52A /* A_InjuectionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = A_InjuectionManager.h; sourceTree = "<group>"; };
 		A97D515920A9140000B2A52A /* A_InjuectionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = A_InjuectionManager.m; sourceTree = "<group>"; };
 		A97D515C20A9366400B2A52A /* UIView+Injuection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Injuection.h"; sourceTree = "<group>"; };
@@ -46,8 +49,6 @@
 		A9EF487A20AFE3A5004BE8E8 /* NSDictionary+Injuection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Injuection.m"; sourceTree = "<group>"; };
 		A9EF487F20AFE677004BE8E8 /* A_ColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A_ColorHelper.h; sourceTree = "<group>"; };
 		A9EF488020AFE677004BE8E8 /* A_ColorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A_ColorHelper.m; sourceTree = "<group>"; };
-		A9F5D83B20BF2945004BC495 /* UITableViewCell+Injuection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Injuection.h"; sourceTree = "<group>"; };
-		A9F5D83C20BF2945004BC495 /* UITableViewCell+Injuection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Injuection.m"; sourceTree = "<group>"; };
 		A9F5D83F20BF4192004BC495 /* UITableView+Injuection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+Injuection.h"; sourceTree = "<group>"; };
 		A9F5D84020BF4192004BC495 /* UITableView+Injuection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Injuection.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +64,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A95491A5246358DF00983A29 /* StyleProviders */ = {
+			isa = PBXGroup;
+			children = (
+				A95491A624636DB600983A29 /* PlistStyleSourceProvider.h */,
+				A95491A724636DB600983A29 /* PlistStyleSourceProvider.m */,
+				A95491AA24636E3000983A29 /* InjectionStyleSourceRepository.h */,
+			);
+			path = StyleProviders;
+			sourceTree = "<group>";
+		};
 		A983C24F209228BD001E0D94 = {
 			isa = PBXGroup;
 			children = (
@@ -82,8 +93,8 @@
 		A983C25B209228BD001E0D94 /* A_StyleInjection */ = {
 			isa = PBXGroup;
 			children = (
-				A9F5D83A20BF0F6C004BC495 /* ControlExtension */,
-				A9EF487E20AFE3C5004BE8E8 /* BaseExtension */,
+				A95491A5246358DF00983A29 /* StyleProviders */,
+				A9EF487E20AFE3C5004BE8E8 /* Extensions */,
 				A9EF487D20AFE3AD004BE8E8 /* Common */,
 				A97D515820A9140000B2A52A /* A_InjuectionManager.h */,
 				A97D515920A9140000B2A52A /* A_InjuectionManager.m */,
@@ -110,24 +121,15 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		A9EF487E20AFE3C5004BE8E8 /* BaseExtension */ = {
+		A9EF487E20AFE3C5004BE8E8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A9F5D83F20BF4192004BC495 /* UITableView+Injuection.h */,
+				A9F5D84020BF4192004BC495 /* UITableView+Injuection.m */,
 				A97D515C20A9366400B2A52A /* UIView+Injuection.h */,
 				A97D515D20A9366400B2A52A /* UIView+Injuection.m */,
 			);
-			path = BaseExtension;
-			sourceTree = "<group>";
-		};
-		A9F5D83A20BF0F6C004BC495 /* ControlExtension */ = {
-			isa = PBXGroup;
-			children = (
-				A9F5D83B20BF2945004BC495 /* UITableViewCell+Injuection.h */,
-				A9F5D83C20BF2945004BC495 /* UITableViewCell+Injuection.m */,
-				A9F5D83F20BF4192004BC495 /* UITableView+Injuection.h */,
-				A9F5D84020BF4192004BC495 /* UITableView+Injuection.m */,
-			);
-			path = ControlExtension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,7 +148,7 @@
 				A9EAD53D20D5A78400598AA7 /* NSString+Regex.h in Headers */,
 				A9C5395B20C3ADAE00EA1747 /* StyleHierarchy.h in Headers */,
 				A9EF487B20AFE3A5004BE8E8 /* NSDictionary+Injuection.h in Headers */,
-				A9F5D83D20BF2945004BC495 /* UITableViewCell+Injuection.h in Headers */,
+				A95491A824636DB600983A29 /* PlistStyleSourceProvider.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +221,7 @@
 			files = (
 				A9F5D84220BF4192004BC495 /* UITableView+Injuection.m in Sources */,
 				A9EF487C20AFE3A5004BE8E8 /* NSDictionary+Injuection.m in Sources */,
-				A9F5D83E20BF2945004BC495 /* UITableViewCell+Injuection.m in Sources */,
+				A95491A924636DB600983A29 /* PlistStyleSourceProvider.m in Sources */,
 				A9EAD53E20D5A78400598AA7 /* NSString+Regex.m in Sources */,
 				A9C5396520C4839200EA1747 /* StyleNormalizer.m in Sources */,
 				A9C5395C20C3ADAE00EA1747 /* StyleHierarchy.m in Sources */,

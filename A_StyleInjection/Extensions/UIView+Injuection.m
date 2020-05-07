@@ -85,7 +85,7 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
         return;
     }
     
-    NSDictionary<NSString *, id> *setting = [[A_InjuectionManager share] getNormalizedStyle:self];
+    NSDictionary<NSString *, id> *setting = [[A_InjuectionManager shared] getNormalizedStyle:self];
     if (setting) {
         [self __setupStyle:setting];
     }

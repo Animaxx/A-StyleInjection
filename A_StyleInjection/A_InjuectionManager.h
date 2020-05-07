@@ -8,23 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
-typedef NS_ENUM(NSUInteger, InjuectionLoadingType) {
-    InjuectionLoadingType_ViewAndProperty   = 0,
-    InjuectionLoadingType_ViewOnly          = 1,
-};
+#import "InjectionStyleSourceRepository.h"
 
 @interface A_InjuectionManager : NSObject
 
-@property(nonatomic) InjuectionLoadingType loadingType;
++ (A_InjuectionManager * _Nonnull)shared;
+- (void)setStyleSourceRepository:(id<InjectionStyleSourceRepository> _Nonnull) source;
 
-+ (A_InjuectionManager * _Nonnull)share;
-
-- (void)setStyleSourceToDict:(NSDictionary * _Nonnull)dict;
-- (void)setStyleSourceToPlist:(NSString * _Nonnull)fileName;
-- (void)setStyleSourceToPlist:(NSString * _Nonnull)fileName withBundle:(NSBundle * _Nonnull)bundle;
+//- (void)setStyleSourceToDict:(NSDictionary * _Nonnull)dict;
+//- (void)setStyleSourceToPlist:(NSString * _Nonnull)fileName;
+//- (void)setStyleSourceToPlist:(NSString * _Nonnull)fileName withBundle:(NSBundle * _Nonnull)bundle;
 
 - (NSDictionary<NSString *, id> * _Nonnull)getNormalizedStyle:(UIView * _Nonnull)view;
-- (NSDictionary<NSString *, id> * _Nonnull)getStyleByKeypaths:(NSArray<NSArray<NSString *> *> * _Nonnull)setOfKeyPaths;
 
 @end
