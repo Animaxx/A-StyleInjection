@@ -13,12 +13,8 @@
 @interface A_InjuectionManager : NSObject
 
 + (A_InjuectionManager * _Nonnull)shared;
+
 - (void)setStyleSourceRepository:(id<InjectionStyleSourceRepository> _Nonnull) source;
-
-//- (void)setStyleSourceToDict:(NSDictionary * _Nonnull)dict;
-//- (void)setStyleSourceToPlist:(NSString * _Nonnull)fileName;
-//- (void)setStyleSourceToPlist:(NSString * _Nonnull)fileName withBundle:(NSBundle * _Nonnull)bundle;
-
 - (NSDictionary<NSString *, id> * _Nonnull)getNormalizedStyle:(UIView * _Nonnull)view;
 
 @end

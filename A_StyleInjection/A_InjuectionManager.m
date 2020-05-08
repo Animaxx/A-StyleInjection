@@ -20,7 +20,6 @@
 
 @interface A_InjuectionManager()
 
-//@property (nonatomic, strong) NSDictionary *styleSource;
 @property (nonatomic, strong) id<InjectionStyleSourceRepository> repository;
 
 @end
