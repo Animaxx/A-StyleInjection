@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>TableViewDemoController</key>
+	<dict>
+		<key>#cellLabel</key>
+		<dict>
+			<key>textColor</key>
+			<string>#AAAA00</string>
+		</dict>
+	</dict>
 	<key>@UILabel</key>
 	<dict>
 		<key>textColor</key>
@@ -35,7 +43,7 @@
 		<key>@UILabel</key>
 		<dict>
 			<key>font</key>
-			<string>$&quot;Helvetica Neue&quot;:50</string>
+			<string>$&quot;Helvetica Neue&quot;:30</string>
 			<key>textColor</key>
 			<string>#0000FF</string>
 		</dict>
@@ -44,9 +52,13 @@
 			<key>font</key>
 			<string>$&quot;Helvetica Neue&quot;:20</string>
 			<key>layer.cornerRadius</key>
-			<string>10</string>
+			<integer>10</integer>
+			<key>clipsToBounds</key>
+			<string>true</string>
 			<key>backgroundColor</key>
 			<string>#CCBBDD</string>
+			<key>textColor</key>
+			<string>#00FFFF</string>
 		</dict>
 	</dict>
 	<key>SimpleButtonDemoController</key>
