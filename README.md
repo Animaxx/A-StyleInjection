@@ -3,25 +3,37 @@
 **A Style Injection** provide the injection way to customize whole iOS application base on the single configuration file.
 
 
-
 ## Installation
-Cocoa Pod install
+Cocoa Pod install:
+```
+  pod 'A_StyleInjection'
+```
 
 
 
-## Usage Example
-1. Setup the style name for your special contols.
-2. Setup the style sheet
+## Style Sheet Format and Rules
 
-## Style Sheet
-Now the project only support .plist file as style sheet file format. Style setting represent as multiple layer key-value structure.
+In the style map, style item are follow below format:
 
-Rule of Keys:
-	
-	1. key start of @ means that is the class of control view. Such as @UILabel means apply to all UILabel in this level.
-	2. key start of # means only apply to special style name. For example #demo1 means only apply the style to these control views named 'demo1'.
-	3. key start without any special character means it's a class of Controller. 
+1. **Multilayer style map**:
+   - First layer can be either the class name of UIViewController or Type/Name style set  
+   - Second layer cannot be the class name of UIViewController, only can be the name of Type/Name style set
+   - When the first layer is the class name of UIViewController, that means all the children style set are apply under this UIViewController
+   - When the first layer is the type/name style set, which means the style set will apply globally with lower priority
 
-Rule of Value:
-	
+2. **Type style set**:  
+   - When the key start with special character `@` means apple the style setting to the type of controls
+   - For instance, `@UILabel` means the style set apply to all the `@UILabel` under that level
+
+3. **Name style set**:  
+   - When the key start with special character `#` means apple the style setting to the controls with the styleIdentifier
+   - For instance, `#demoLabel` means the style set apple to all UIViews with the styleIdentifier named `#demoLabel`  
+
+4. **Value of style set**:  
+   - Style set should be dictionary, key is property name of the control; and the value is the value of the property
+   - The key as property can be class/structure, and in some case need to set the property to the sub-property; we can using `(dot .)` in this case:
+     + For Example, set the view to be rounded corners; then we can have  
+   - In the plist, we can only set value as string, here is the format for the style set to allow us to setup different object:  
+     + Color: it must start with `#` and come along with 6 digit, e.g. `#A0A0A0`  
+     + Font: it must start with `$` come along with `""` has Font name init, then `:` with size of Font, e.g. `$"Helvetica Neue":17`
 
