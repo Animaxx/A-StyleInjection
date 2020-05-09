@@ -13,12 +13,13 @@
 
 @implementation UIView(Injuection)
 
+static char *viewStyleApplied = "aAssociatedStyleApplied";
 static char *viewStyleIdentifier = "aAssociatedStyleIdentifier";
 static char *viewParentController = "aAssociatedParentController";
 
 @dynamic styleIdentifier, parentController, isStyleApplied;
 
-static IMP __original_WillMoveToWindow_Method_Imp;
+static IMP __original_DidMoveToWindow_Method_Imp;
 
 #pragma mark - Associate values
 - (id)fetchAssociateValue:(char *)key {
@@ -43,8 +44,8 @@ static IMP __original_WillMoveToWindow_Method_Imp;
     [self setAssociateValue:vc withKey:viewParentController type:OBJC_ASSOCIATION_ASSIGN];
 }
 - (BOOL)isStyleApplied {
-    id value = [self fetchAssociateValue:viewStyleIdentifier];
-    return value && [value isKindOfClass:[NSString class]];
+    id value = [self fetchAssociateValue:viewStyleApplied];
+    return !value && [value boolValue];
 }
 
 + (void)load {
@@ -67,7 +68,7 @@ static IMP __original_WillMoveToWindow_Method_Imp;
         }
 
         if (originalMethodImpl) {
-            __original_WillMoveToWindow_Method_Imp = originalMethodImpl;
+            __original_DidMoveToWindow_Method_Imp = originalMethodImpl;
         }
     });
 }
@@ -75,8 +76,8 @@ static IMP __original_WillMoveToWindow_Method_Imp;
 void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
     [self loadStyle:YES forceReload:NO];
     
-    if (__original_WillMoveToWindow_Method_Imp) {
-        ((void(*)(id,SEL))__original_WillMoveToWindow_Method_Imp)(self, _cmd);
+    if (__original_DidMoveToWindow_Method_Imp) {
+        ((void(*)(id,SEL))__original_DidMoveToWindow_Method_Imp)(self, _cmd);
     }
 }
 
@@ -85,8 +86,11 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
         return;
     }
     
+    if ([self __findParentController]) {
+        [self setAssociateValue:@(true) withKey:viewStyleApplied type:OBJC_ASSOCIATION_COPY];
+    }
     NSDictionary<NSString *, id> *setting = [[A_InjuectionManager shared] getNormalizedStyle:self];
-    if (setting) {
+    if (setting && [setting count] > 0) {
         [self __setupStyle:setting];
     }
     

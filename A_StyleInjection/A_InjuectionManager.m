@@ -52,7 +52,7 @@
 
 - (NSDictionary<NSString *, id> *)getNormalizedStyle:(UIView *)view {
     NSString *className = NSStringFromClass([view class]);
-    NSString *key = [view styleIdentifier];
+    NSString *identifier = [view styleIdentifier];
     UIViewController *parentController = [view __findParentController];
     if (!parentController) {
         return @{};
@@ -62,17 +62,15 @@
     
     NSMutableArray *stylePaths = [[NSMutableArray alloc] init];
     [stylePaths addObject:@[[NSString stringWithFormat:@"@%@", className]]];
-    [stylePaths addObject:@[@"GOBAL", [NSString stringWithFormat:@"@%@", className]]];
     
-    if (key) {
-        [stylePaths addObject:@[[NSString stringWithFormat:@"#%@", key]]];
-        [stylePaths addObject:@[@"GOBAL", [NSString stringWithFormat:@"#%@", key]]];
+    if (identifier) {
+        [stylePaths addObject:@[[NSString stringWithFormat:@"#%@", identifier]]];
     }
     
     if (controllerName) {
         [stylePaths addObject:@[controllerName, [NSString stringWithFormat:@"@%@", className]]];
-        if (key) {
-            [stylePaths addObject:@[controllerName, [NSString stringWithFormat:@"#%@", key]]];
+        if (identifier) {
+            [stylePaths addObject:@[controllerName, [NSString stringWithFormat:@"#%@", identifier]]];
         }
     }
     

@@ -36,6 +36,7 @@
 		A95491AA24636E3000983A29 /* InjectionStyleSourceRepository.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InjectionStyleSourceRepository.h; sourceTree = "<group>"; };
 		A95491AB246462B700983A29 /* DictionaryStyleSourceProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DictionaryStyleSourceProvider.h; sourceTree = "<group>"; };
 		A95491AC246462B700983A29 /* DictionaryStyleSourceProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DictionaryStyleSourceProvider.m; sourceTree = "<group>"; };
+		A95491C22466651B00983A29 /* StyleSerializerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyleSerializerInterface.h; sourceTree = "<group>"; };
 		A97D515820A9140000B2A52A /* A_InjuectionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = A_InjuectionManager.h; sourceTree = "<group>"; };
 		A97D515920A9140000B2A52A /* A_InjuectionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = A_InjuectionManager.m; sourceTree = "<group>"; };
 		A97D515C20A9366400B2A52A /* UIView+Injuection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Injuection.h"; sourceTree = "<group>"; };
@@ -71,11 +72,14 @@
 		A95491A5246358DF00983A29 /* StyleProviders */ = {
 			isa = PBXGroup;
 			children = (
+				A95491AA24636E3000983A29 /* InjectionStyleSourceRepository.h */,
 				A95491AB246462B700983A29 /* DictionaryStyleSourceProvider.h */,
 				A95491AC246462B700983A29 /* DictionaryStyleSourceProvider.m */,
 				A95491A624636DB600983A29 /* PlistStyleSourceProvider.h */,
 				A95491A724636DB600983A29 /* PlistStyleSourceProvider.m */,
-				A95491AA24636E3000983A29 /* InjectionStyleSourceRepository.h */,
+				A95491C22466651B00983A29 /* StyleSerializerInterface.h */,
+				A9C5396220C4839200EA1747 /* StyleNormalizer.h */,
+				A9C5396320C4839200EA1747 /* StyleNormalizer.m */,
 			);
 			path = StyleProviders;
 			sourceTree = "<group>";
@@ -119,8 +123,6 @@
 				A9EF488020AFE677004BE8E8 /* A_ColorHelper.m */,
 				A9EF487920AFE3A5004BE8E8 /* NSDictionary+Injuection.h */,
 				A9EF487A20AFE3A5004BE8E8 /* NSDictionary+Injuection.m */,
-				A9C5396220C4839200EA1747 /* StyleNormalizer.h */,
-				A9C5396320C4839200EA1747 /* StyleNormalizer.m */,
 				A9EAD53B20D5A78400598AA7 /* NSString+Regex.h */,
 				A9EAD53C20D5A78400598AA7 /* NSString+Regex.m */,
 			);

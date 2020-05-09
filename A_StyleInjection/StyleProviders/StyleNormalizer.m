@@ -28,8 +28,13 @@
     return rawValue;
 }
 
+- (void)getConvertMethods {
+    // TODO:
+//    NSPointerArray *list = [[NSPointerArray alloc] init];
+}
+
 + (id)convertColor:(NSString *)inputValue {
-    //color format example: #00000
+    //color format example: #000000
     if ([inputValue matchRegexFormat:@"^#(\\d|[A-F]){6}$"]) {
         return [A_ColorHelper A_ColorMakeFormString:inputValue];
     }
