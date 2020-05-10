@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DictionaryStyleSourceProvider : NSObject<InjectionStyleSourceRepository>
+@interface StyleDictionaryProvider : NSObject<InjectionStyleSourceRepository>
 
 - (instancetype)init:(NSDictionary<NSString *, id> *)styleDictionary;
 - (void)setStyle:(NSString *)styleValue toPath:(NSArray<NSString *> *)path;

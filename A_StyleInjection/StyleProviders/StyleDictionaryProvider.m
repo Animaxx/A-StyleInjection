@@ -6,15 +6,15 @@
 //  Copyright © 2020 Animax. All rights reserved.
 //
 
-#import "DictionaryStyleSourceProvider.h"
+#import "StyleDictionaryProvider.h"
 
-@interface DictionaryStyleSourceProvider()
+@interface StyleDictionaryProvider()
 
 @property (nonatomic, strong, nonnull) NSDictionary<NSString *, id> *sourceStyleSheet;
 
 @end
 
-@implementation DictionaryStyleSourceProvider
+@implementation StyleDictionaryProvider
 
 - (instancetype)init: (NSDictionary<NSString *, id> *)dictionary {
     self = [super init];

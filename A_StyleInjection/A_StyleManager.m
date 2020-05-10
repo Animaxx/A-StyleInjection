@@ -6,11 +6,11 @@
 //  Copyright © 2018 Animax. All rights reserved.
 //
 
-#import "A_InjuectionManager.h"
+#import "A_StyleManager.h"
 #import "UIView+Injuection.h"
 #import "A_ColorHelper.h"
 #import "StyleNormalizer.h"
-#import "PlistStyleSourceProvider.h"
+#import "StylePlistProvider.h"
 
 @interface UIView()
 
@@ -18,33 +18,35 @@
 
 @end
 
-@interface A_InjuectionManager()
+@interface A_StyleManager()
 
 @property (nonatomic, strong) id<InjectionStyleSourceRepository> repository;
 
 @end
 
-@implementation A_InjuectionManager
+@implementation A_StyleManager
 
-+ (A_InjuectionManager *)shared {
++ (A_StyleManager *)shared {
     static dispatch_once_t pred = 0;
-    __strong static A_InjuectionManager *obj = nil;
+    __strong static A_StyleManager *obj = nil;
     dispatch_once(&pred, ^{
-        obj = [[A_InjuectionManager alloc] init];
+        obj = [[A_StyleManager alloc] init];
     });
     
     return obj;
 }
 
-- (void)setStyleSourceRepository:(id<InjectionStyleSourceRepository> _Nonnull) source {
+
+- (void)setupStyleSourceRepository:(id<InjectionStyleSourceRepository> _Nonnull) source {
     @synchronized (self) {
         self.repository = source;
     }
 }
+
 - (id<InjectionStyleSourceRepository>) getSourceRepository {
     @synchronized (self) {
         if (!self.repository) {
-            self.repository = [[PlistStyleSourceProvider alloc] init:@"StyleSheet"];
+            self.repository = [[StylePlistProvider alloc] init:@"StyleSheet"];
         }
         return self.repository;
     }
@@ -83,6 +85,12 @@
     }
     
     return styleSetting;
+}
+
+- (void)applyStyleToWindow:(UIWindow * _Nonnull)window {
+    // TODO:
+    
+//    [UIFont fontWithName:<#(nonnull NSString *)#> size:<#(CGFloat)#>
 }
 
 @end

@@ -6,18 +6,19 @@
 //  Copyright © 2020 Animax. All rights reserved.
 //
 
-#import "PlistStyleSourceProvider.h"
+#import "StylePlistProvider.h"
 
-@interface PlistStyleSourceProvider()
+@interface StylePlistProvider()
 
 @property (nonatomic, strong) NSString *sourceFilename;
 @property (nonatomic, strong) NSBundle *sourceBundle;
 
 @property (nonatomic, strong) NSDictionary<NSString *, id> *sourceStyleSheet;
+@property (nonatomic) BOOL isFailedFileLoad;
 
 @end
 
-@implementation PlistStyleSourceProvider
+@implementation StylePlistProvider
 
 - (instancetype)init:(NSString *)fileName {
     return [self init:fileName withBundle:[NSBundle mainBundle]];
@@ -51,11 +52,22 @@
 
 - (NSDictionary<NSString *, id> *)getStyleByKeypaths:(NSArray<NSArray<NSString *> *> *)setOfKeyPaths {
     
+    if (self.isFailedFileLoad) {
+        return @{};
+    }
+    
     @synchronized (self) {
         if (!self.sourceStyleSheet) {
             NSString *path = [self.sourceBundle pathForResource:self.sourceFilename ofType: @"plist"];
-            NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
-            self.sourceStyleSheet = dict;
+            if (path) {
+                NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+                self.sourceStyleSheet = dict;
+            } else {
+                self.isFailedFileLoad = true;
+                NSLog(@"========== StylePlistProvider ==========");
+                NSLog(@"Not able to load file %@.plist", self.sourceFilename);
+                return @{};
+            }
         }
     }
     

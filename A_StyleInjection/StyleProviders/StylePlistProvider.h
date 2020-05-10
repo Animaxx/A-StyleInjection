@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PlistStyleSourceProvider : NSObject<InjectionStyleSourceRepository>
+@interface StylePlistProvider : NSObject<InjectionStyleSourceRepository>
 
 - (instancetype)init:(NSString *)fileName;
 - (instancetype)init:(NSString *)fileName withBundle:(NSBundle *)bundle;

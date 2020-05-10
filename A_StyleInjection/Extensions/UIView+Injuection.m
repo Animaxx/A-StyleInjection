@@ -8,8 +8,7 @@
 
 #import "UIView+Injuection.h"
 #import <objc/runtime.h>
-#import "NSDictionary+Injuection.h"
-#import "A_InjuectionManager.h"
+#import "A_StyleManager.h"
 
 @implementation UIView(Injuection)
 
@@ -89,7 +88,7 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
     if ([self __findParentController]) {
         [self setAssociateValue:@(true) withKey:viewStyleApplied type:OBJC_ASSOCIATION_COPY];
     }
-    NSDictionary<NSString *, id> *setting = [[A_InjuectionManager shared] getNormalizedStyle:self];
+    NSDictionary<NSString *, id> *setting = [[A_StyleManager shared] getNormalizedStyle:self];
     if (setting && [setting count] > 0) {
         [self __setupStyle:setting];
     }

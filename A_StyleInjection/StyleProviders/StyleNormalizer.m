@@ -22,15 +22,13 @@
     output = [StyleNormalizer convertColor:rawValue];
     if (output) { return output; }
     
+    output = [StyleNormalizer covertCGColor:rawValue];
+    if (output) { return output; }
+    
     output = [StyleNormalizer convertFont:rawValue];
     if (output) { return output; }
     
     return rawValue;
-}
-
-- (void)getConvertMethods {
-    // TODO:
-//    NSPointerArray *list = [[NSPointerArray alloc] init];
 }
 
 + (id)convertColor:(NSString *)inputValue {
@@ -42,8 +40,8 @@
 }
 + (id)convertFont:(NSString *)inputValue {
     //font format example: $"Helvetica Neue":17
-    if ([inputValue matchRegexFormat:@"^\\$\\\"[a-zA-z ]+\\\"\\:[0-9]*$"]) {
-        NSString *fontNameStr = [inputValue extractFirstRegex:@"^\\$\\\"([a-zA-Z ]+)\\\""];
+    if ([inputValue matchRegexFormat:@"^\\$\\\"[a-zA-z -_]+\\\"\\:[0-9]*$"]) {
+        NSString *fontNameStr = [inputValue extractFirstRegex:@"^\\$\\\"([a-zA-Z -_]+)\\\""];
         NSString *fontSizeStr = [inputValue extractFirstRegex:@":([0-9]*)$"];
         
         if (fontNameStr && fontSizeStr) {
@@ -52,10 +50,26 @@
                 return font;
             }
         }
+        
+        if (fontSizeStr) {
+            UIFont *font = [UIFont systemFontOfSize:[fontSizeStr floatValue]];
+            if (font) {
+                return font;
+            }
+        }
+        
+        
     }
     
     return nil;
 }
 
++ (id)covertCGColor:(NSString *)inputValue {
+    //color format example: CG#000000
+    if ([inputValue matchRegexFormat:@"^CG#(\\d|[A-F]){6}$"]) {
+        return (id)[A_ColorHelper A_ColorMakeFormString:[inputValue substringFromIndex:2]].CGColor;
+    }
+    return nil;
+}
 
 @end
