@@ -45,11 +45,11 @@ Create file named **StyleSheet.plist** to the project as below, no code needed, 
 
 **Style configuration**
 
-<img src="./Example/ReadmePhotos/StyleSetting_1.png" alt="StyleSetting_1" style="zoom:35%;" />
+<img src="./Example/ReadmePhotos/StyleSetting_1.png" alt="StyleSetting_1" width="40%" />
 
 **Runtime results**
 
-![PhoneScreen_1](/Users/animax/Documents/MyProjects/A-StyleInjection/Example/ReadmePhotos/PhoneScreen_1.png)
+![PhoneScreen_1](./Example/ReadmePhotos/PhoneScreen_1.png)
 
 #### Load from specified style file
 
@@ -60,16 +60,17 @@ A_StyleManager.shared().setupStyleSourceRepository(StylePlistProvider("StyleShee
 ```
 
 ```objc
-[[A_InjuectionManager shared] setupStyleSourceRepository:[[StylePlistProvider alloc] init:@"StyleSheet_2"]];
+[[A_InjuectionManager shared] setupStyleSourceRepository:
+      [[StylePlistProvider alloc] init:@"StyleSheet_2"]];
 ```
 
 **StyleSheet_2 configuration**
 
-<img src="./Example/ReadmePhotos/StyleSetting_1.png" alt="StyleSetting_2" style="zoom:35%;" />
+<img src="./Example/ReadmePhotos/StyleSetting_1.png" alt="StyleSetting_2" width="40%" />
 
 **Runtime Results:**
 
-![PhoneScreen_1](/Users/animax/Documents/MyProjects/A-StyleInjection/Example/ReadmePhotos/PhoneScreen_2.png)
+![PhoneScreen_1](./Example/ReadmePhotos/PhoneScreen_2.png)
 
 
 
