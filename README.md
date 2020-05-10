@@ -1,11 +1,11 @@
 # A-StyleInjection
 
-**A Style Injection** provide the injection way to customize whole iOS application base on the single configuration file with extra coding.
+**A Style Injection** provide the injection way to customize whole iOS application base on the single configuration file without extra coding.
 
 
 ## Style Sheet Format and Rules
 
-In the style map, style item are follow below format:
+In the style map, style item are follow below rules:
 
 1. **Multilayer style map**:
    - First layer can be either the class name of UIViewController or Type/Name style set  
@@ -82,7 +82,7 @@ Cocoa Pod install:
 ```
 
 
-## Style set value format
+## Format of Style value
 
 | Type  | Format                   | Example                | Desc |
 | ----- | ------------------------ | ---------------------- | ---- |
