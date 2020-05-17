@@ -1,4 +1,4 @@
-# A-StyleInjection
+# A Style Injection Framework
 
 **A Style Injection** provide the injection way to customize whole iOS application base on the single configuration file without extra coding.
 
@@ -82,6 +82,7 @@ Cocoa Pod install:
 ```
 
 
+
 ## Format of Style value
 
 | Type  | Format                   | Example                | Desc |
@@ -89,5 +90,22 @@ Cocoa Pod install:
 | **Color** | \# with 6 digit          | `#A0A0A0`             | Create UICOlor |
 | **CGColor** | CG\# with 6 digit | `#A0A0A0` | Create CGColorRef |
 | **Font** | $" Font name ":Font Size | `$"Helvetica Neue":17` | Create Font |
+
+
+
+
+## UIKit Extension Property
+
+#### UIButton
+| Property                   | Mapped Original Function       |
+| ------------------------ | ---------------------- |
+| **normalTitle** | `titleForState:Normal`             |
+| **highlightedTitle** | `titleForState:Highlighted` |
+| **disabledTitle** | `titleForState:Disabled` |
+| **selectedTitle** | `titleForState:Selected` |
+| **normalTitleColor** | `titleColorForState:Normal` |
+| **highlightedTitleColor** | `titleColorForState:Highlighted` |
+| **disabledTitleColor** | `titleColorForState:Disabled` |
+| **selectedTitleColor** | `titleColorForState:Selected` |
 
 
