@@ -7,26 +7,32 @@
 		<key>#cellLabel</key>
 		<dict>
 			<key>textColor</key>
-			<string>#AAAA00</string>
+			<string>#CCCCCC</string>
+			<key>layer.cornerRadius</key>
+			<integer>10</integer>
+		</dict>
+		<key>#cellBox</key>
+		<dict>
+			<key>backgroundColor</key>
+			<string>#CCCCCC</string>
+			<key>layer.cornerRadius</key>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>@UILabel</key>
 	<dict>
 		<key>textColor</key>
-		<string>#FFFF00</string>
+		<string>#756180</string>
+		<key>font</key>
+		<string>$&quot;SanFranciscoRounded-Medium&quot;:16</string>
 	</dict>
-	<key>UINavigationBar</key>
+	<key>@UINavigationBar</key>
 	<dict>
 		<key>barTintColor</key>
-		<string>#000000</string>
+		<string>#693B80</string>
 	</dict>
 	<key>UINavigationController</key>
 	<dict>
-		<key>@UINavigationBar</key>
-		<dict>
-			<key>barTintColor</key>
-			<string>#4059AD</string>
-		</dict>
 		<key>@UIView</key>
 		<dict>
 			<key>backgroundColor</key>
@@ -43,38 +49,39 @@
 		<key>@UILabel</key>
 		<dict>
 			<key>font</key>
-			<string>$&quot;HelveticaNeue&quot;:30</string>
-			<key>textColor</key>
-			<string>#0000FF</string>
+			<string>$&quot;BradleyHandITCTT-Bold&quot;:14</string>
 		</dict>
 		<key>#demo1</key>
 		<dict>
 			<key>font</key>
-			<string>$&quot;HelveticaNeue&quot;:20</string>
-			<key>layer.cornerRadius</key>
-			<integer>10</integer>
-			<key>clipsToBounds</key>
-			<string>true</string>
-			<key>backgroundColor</key>
-			<string>#CCBBDD</string>
+			<string>$&quot;Chalkduster&quot;:20</string>
 			<key>textColor</key>
-			<string>#00FFFF</string>
+			<string>#F4B942</string>
+			<key>text</key>
+			<string>Demo</string>
 		</dict>
 	</dict>
 	<key>SimpleButtonDemoController</key>
 	<dict>
+		<key>@UILabel</key>
+		<dict>
+			<key>textColor</key>
+			<string>#49B340</string>
+			<key>font</key>
+			<string>$&quot;SanFranciscoRounded-Medium&quot;:20</string>
+			<key>text</key>
+			<string>Label Text</string>
+		</dict>
 		<key>#theButton</key>
 		<dict>
 			<key>normalTitle</key>
-			<string>The Button Text</string>
+			<string># theButton</string>
 			<key>normalTitleColor</key>
-			<string>#000000</string>
-			<key>layer.borderColor</key>
-			<string>CG#A0A0A0</string>
-			<key>layer.borderWidth</key>
-			<integer>2</integer>
+			<string>#49B340</string>
 			<key>layer.cornerRadius</key>
 			<integer>10</integer>
+			<key>backgroundColor</key>
+			<string>#E0FF75</string>
 		</dict>
 	</dict>
 </dict>

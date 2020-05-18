@@ -5,6 +5,9 @@
       location = "group:../../A_StyleInjection.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:ObjcExample.xcodeproj">
+      location = "group:ObjcExample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
