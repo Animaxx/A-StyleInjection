@@ -22,10 +22,14 @@
 - (void)setupStyleSourceRepository:(id<InjectionStyleSourceRepository> _Nonnull) source;
 
 
-/// Apply style setting to whole project, it will replace original style which already applied
+/// Apply and force refresh the style setting to whole window, it will replace original style if already applied
 ///
 /// @param window UIWindow
-- (void)applyStyleToWindow:(UIWindow * _Nonnull)window;
+- (void)applyStyleInWindow:(UIWindow * _Nonnull)window;
+
+
+/// Apply and force refresh the style setting to key window, it will replace original style if already applied
+ - (void)applyStyle;
 
 /// Fetch style setting for appointed view
 ///

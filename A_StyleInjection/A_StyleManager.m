@@ -87,10 +87,26 @@
     return styleSetting;
 }
 
-- (void)applyStyleToWindow:(UIWindow * _Nonnull)window {
-    // TODO:
+- (void)applyStyle {
+    if ([UIApplication sharedApplication].keyWindow) {
+        [self applyStyleInWindow:[UIApplication sharedApplication].keyWindow];
+    } else {
+        NSException *error = [NSException exceptionWithName:@"StyleManagerException" reason:@"KeyWindow is not exist" userInfo:nil];
+        @throw error;
+    }
+}
+- (void)applyStyleInWindow:(UIWindow * _Nonnull)window {
+    if (window.rootViewController == nil) {
+        return;
+    }
     
-//    [UIFont fontWithName:<#(nonnull NSString *)#> size:<#(CGFloat)#>
+    [window.rootViewController.view loadStyle:YES forceReload:YES];
+    [[[window.rootViewController presentedViewController] view] loadStyle:YES forceReload:YES];
+    
+    if ([window.rootViewController isKindOfClass:[UINavigationController class]]) {
+        [[[(UINavigationController *)window.rootViewController visibleViewController] view] loadStyle:YES forceReload:YES];
+    }
+
 }
 
 @end
