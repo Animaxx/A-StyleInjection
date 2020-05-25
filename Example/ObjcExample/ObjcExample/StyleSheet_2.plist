@@ -84,5 +84,19 @@
 			<string>#E0FF75</string>
 		</dict>
 	</dict>
+	<key>StyleChangeDemoController</key>
+	<dict>
+		<key>@UIButton</key>
+		<dict>
+			<key>normalTitleColor</key>
+			<string>#000000</string>
+			<key>normalTitle</key>
+			<string>Current Style </string>
+			<key>layer.cornerRadius</key>
+			<integer>10</integer>
+			<key>backgroundColor</key>
+			<string>#E0FF75</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

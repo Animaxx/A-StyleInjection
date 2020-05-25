@@ -19,8 +19,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[A_StyleManager shared] setupStyleSourceRepository:[[StylePlistProvider alloc] init:@"StyleSheet_2"]];
-    
     return YES;
 }
 

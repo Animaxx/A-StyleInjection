@@ -77,5 +77,15 @@
 			<integer>10</integer>
 		</dict>
 	</dict>
+	<key>StyleChangeDemoController</key>
+	<dict>
+		<key>@UIButton</key>
+		<dict>
+			<key>normalTitleColor</key>
+			<string>#A0A0A0</string>
+			<key>normalTitle</key>
+			<string>Change Style</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

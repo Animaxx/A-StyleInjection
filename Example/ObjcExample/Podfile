@@ -6,6 +6,6 @@ target 'ObjcExample' do
   use_frameworks!
 
   # Pods for ObjcExample
-  # pod 'A_StyleInjection', :path => '../../'
+   pod 'A_StyleInjection', :path => '../../'
   
 end
