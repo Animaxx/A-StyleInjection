@@ -16,6 +16,7 @@
 - [ ] [Style Value]  load image format
 - [ ] [Function] Set style to specific layer
 - [ ] [Function] Set style to specific number of the item [?]
+- [ ] [Function / Style Value] Provide animation style injuection
 
 
 
