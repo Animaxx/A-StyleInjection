@@ -26,7 +26,7 @@
 /// Register style value decoding function
 ///
 /// @param block function closure
-- (void)registerValueDecodeFunc:(StyleNormalizeBlock _Nonnull)block;
+- (void)registerValueDecodeFunc:(StyleValueDecodeFuncBlock _Nonnull)block;
 
 /// Apply and force refresh the style setting to whole window, it will replace original style if already applied
 ///

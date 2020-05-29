@@ -16,9 +16,8 @@ FOUNDATION_EXPORT const unsigned char A_StyleInjectionVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <A_StyleInjection/PublicHeader.h>
 
-#import "StyleNormalizeInterface.h"
 #import "A_StyleManager.h"
 #import "UIView+Injuection.h"
-
 #import "StylePlistProvider.h"
 #import "StyleDictionaryProvider.h"
+#import "StyleValueDecoderInterface.h"
