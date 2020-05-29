@@ -9,7 +9,7 @@
 #import "A_StyleManager.h"
 #import "UIView+Injuection.h"
 #import "A_ColorHelper.h"
-#import "StyleNormalizer.h"
+#import "StyleValueDecoder.h"
 #import "StylePlistProvider.h"
 
 @interface UIView()
@@ -21,6 +21,7 @@
 @interface A_StyleManager()
 
 @property (nonatomic, strong) id<InjectionStyleSourceRepository> repository;
+@property (nonatomic, strong) id<StyleValueDecoderInterface> styleNormalizeProvider;
 
 @end
 
@@ -31,11 +32,11 @@
     __strong static A_StyleManager *obj = nil;
     dispatch_once(&pred, ^{
         obj = [[A_StyleManager alloc] init];
+        obj.styleNormalizeProvider = [[StyleValueDecoder alloc] init];
     });
     
     return obj;
 }
-
 
 - (void)setupStyleSourceRepository:(id<InjectionStyleSourceRepository> _Nonnull) source {
     @synchronized (self) {
@@ -44,6 +45,10 @@
 }
 
 - (id<InjectionStyleSourceRepository>) getSourceRepository {
+    if (self.repository != nil) {
+        return self.repository;
+    }
+    
     @synchronized (self) {
         if (!self.repository) {
             self.repository = [[StylePlistProvider alloc] init:@"StyleSheet"];
@@ -80,7 +85,7 @@
     
     for (NSString *key in [styleSetting allKeys]) {
         id value = [styleSetting objectForKey:key];
-        value = [StyleNormalizer normalize:value];
+        value = [self.styleNormalizeProvider decode:value];
         [styleSetting setValue:value forKey:key];
     }
     
@@ -107,6 +112,10 @@
         [[[(UINavigationController *)window.rootViewController visibleViewController] view] loadStyle:YES forceReload:YES];
     }
 
+}
+
+- (void)registerValueDecodeFunc:(StyleValueDecodeFuncBlock _Nonnull)block {
+    [self.styleNormalizeProvider regiesterValueDecodeFunc:block];
 }
 
 @end

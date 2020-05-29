@@ -6,39 +6,67 @@
 //  Copyright © 2018 Animax. All rights reserved.
 //
 
-#import "StyleNormalizer.h"
+#import "StyleValueDecoder.h"
 #import "A_ColorHelper.h"
 #import "NSString+Regex.h"
 
-@implementation StyleNormalizer
+@interface StyleValueDecoder()
 
-+ (id)normalize:(id)rawValue {
-    if (![rawValue isKindOfClass:[NSString class]]) {
-        return rawValue;
+@property NSMutableArray *normalizeFuncs;
+
+@end
+
+@implementation StyleValueDecoder
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.normalizeFuncs = [[NSMutableArray alloc] init];
     }
-    
-    id output = nil;
-    
-    output = [StyleNormalizer convertColor:rawValue];
+    return self;
+}
+
+- (void)regiesterValueDecodeFunc:(StyleValueDecodeFuncBlock _Nonnull)funcBlock {
+    [self.normalizeFuncs addObject:[funcBlock copy]];
+}
+- (id)decode:(id)rawValue {
+    id output = [self __systemNormalizeFunc:rawValue];
     if (output) { return output; }
     
-    output = [StyleNormalizer covertCGColor:rawValue];
-    if (output) { return output; }
-    
-    output = [StyleNormalizer convertFont:rawValue];
-    if (output) { return output; }
+    for (id (^item)(id raw) in self.normalizeFuncs) {
+        output = item(rawValue);
+        if (output) {
+            return output;
+        }
+    }
     
     return rawValue;
 }
 
-+ (id)convertColor:(NSString *)inputValue {
+- (id)__systemNormalizeFunc:(id)rawValue {
+    id output = nil;
+    if ([rawValue isKindOfClass:[NSString class]]) {
+        output = [self __convertColor:rawValue];
+        if (output) { return output; }
+        
+        output = [self __covertCGColor:rawValue];
+        if (output) { return output; }
+        
+        output = [self __convertFont:rawValue];
+        if (output) { return output; }
+    }
+    return nil;
+}
+
+- (id)__convertColor:(NSString *)inputValue {
     //color format example: #000000
     if ([inputValue matchRegexFormat:@"^#(\\d|[A-F]){6}$"]) {
         return [A_ColorHelper A_ColorMakeFormString:inputValue];
     }
     return nil;
 }
-+ (id)convertFont:(NSString *)inputValue {
+- (id)__convertFont:(NSString *)inputValue {
     //font format example: $"Helvetica Neue":17
     if ([inputValue matchRegexFormat:@"^\\$\\\"[a-zA-z -_]+\\\"\\:[0-9]*$"]) {
         NSString *fontNameStr = [inputValue extractFirstRegex:@"^\\$\\\"([a-zA-Z -_]+)\\\""];
@@ -57,14 +85,11 @@
                 return font;
             }
         }
-        
-        
     }
     
     return nil;
 }
-
-+ (id)covertCGColor:(NSString *)inputValue {
+- (id)__covertCGColor:(NSString *)inputValue {
     //color format example: CG#000000
     if ([inputValue matchRegexFormat:@"^CG#(\\d|[A-F]){6}$"]) {
         return (id)[A_ColorHelper A_ColorMakeFormString:[inputValue substringFromIndex:2]].CGColor;

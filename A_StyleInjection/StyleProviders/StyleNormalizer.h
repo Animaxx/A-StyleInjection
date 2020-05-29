@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StyleNormalizerInterface.h"
 
-@interface StyleNormalizer : NSObject
+@interface StyleValueDecoder : NSObject<StyleNormalizerInterface>
 
-+ (id _Nonnull)normalize:(id _Nonnull)rawValue;
+- (id _Nonnull)normalize:(id _Nonnull)rawValue;
+- (void)regiesterNormalizeFunc:(StyleNormalizeBlock _Nonnull)funcBlock;
 
 @end

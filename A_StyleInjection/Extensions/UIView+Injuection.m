@@ -125,11 +125,19 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
 }
 
 - (void)injuectStyle:(id)value tokey:(NSString *)keypath {
-    @try {
-        [self setValue:value forKeyPath:keypath];
-    } @catch (NSException *ex) {
-        NSLog(@"Set style error: key %@ ", ex);
+    if ([self __verifyInjuectStyle:value tokey:keypath]) {
+        @try {
+            [self setValue:value forKeyPath:keypath];
+        } @catch (NSException *ex) {
+            NSLog(@"Set style failed with key %@ \nerror: %@ ", keypath, ex);
+        }
+    } else {
+        NSLog(@"Set style with incorrect type: key %@", keypath);
     }
+}
+- (BOOL)__verifyInjuectStyle:(id)value tokey:(NSString *)keypath {
+    // TODO:
+    return YES;
 }
 
 @end

@@ -50,12 +50,10 @@
     }
 }
 
-- (NSDictionary<NSString *, id> *)getStyleByKeypaths:(NSArray<NSArray<NSString *> *> *)setOfKeyPaths {
-    
+- (BOOL)_loadPlistFile {
     if (self.isFailedFileLoad) {
-        return @{};
+        return false;
     }
-    
     @synchronized (self) {
         if (!self.sourceStyleSheet) {
             NSString *path = [self.sourceBundle pathForResource:self.sourceFilename ofType: @"plist"];
@@ -66,8 +64,16 @@
                 self.isFailedFileLoad = true;
                 NSLog(@"========== StylePlistProvider ==========");
                 NSLog(@"Not able to load file %@.plist", self.sourceFilename);
-                return @{};
+                return false;
             }
+        }
+        return true;
+    }
+}
+- (NSDictionary<NSString *, id> *)getStyleByKeypaths:(NSArray<NSArray<NSString *> *> *)setOfKeyPaths {
+    if (!self.sourceStyleSheet) {
+        if (![self _loadPlistFile]) {
+            return @{};
         }
     }
     

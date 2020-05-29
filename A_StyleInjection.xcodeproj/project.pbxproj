@@ -19,10 +19,11 @@
 		A97D515E20A9366400B2A52A /* UIView+Injuection.h in Headers */ = {isa = PBXBuildFile; fileRef = A97D515C20A9366400B2A52A /* UIView+Injuection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A97D515F20A9366400B2A52A /* UIView+Injuection.m in Sources */ = {isa = PBXBuildFile; fileRef = A97D515D20A9366400B2A52A /* UIView+Injuection.m */; };
 		A983C25E209228BD001E0D94 /* A_StyleInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = A983C25C209228BD001E0D94 /* A_StyleInjection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9A3361C2480BB3F00AD4B39 /* StyleValueDecoderInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = A95491C22466651B00983A29 /* StyleValueDecoderInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9C5395B20C3ADAE00EA1747 /* StyleHierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = A9C5395920C3ADAE00EA1747 /* StyleHierarchy.h */; };
 		A9C5395C20C3ADAE00EA1747 /* StyleHierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C5395A20C3ADAE00EA1747 /* StyleHierarchy.m */; };
-		A9C5396420C4839200EA1747 /* StyleNormalizer.h in Headers */ = {isa = PBXBuildFile; fileRef = A9C5396220C4839200EA1747 /* StyleNormalizer.h */; };
-		A9C5396520C4839200EA1747 /* StyleNormalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C5396320C4839200EA1747 /* StyleNormalizer.m */; };
+		A9C5396420C4839200EA1747 /* StyleValueDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = A9C5396220C4839200EA1747 /* StyleValueDecoder.h */; };
+		A9C5396520C4839200EA1747 /* StyleValueDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C5396320C4839200EA1747 /* StyleValueDecoder.m */; };
 		A9EAD53D20D5A78400598AA7 /* NSString+Regex.h in Headers */ = {isa = PBXBuildFile; fileRef = A9EAD53B20D5A78400598AA7 /* NSString+Regex.h */; };
 		A9EAD53E20D5A78400598AA7 /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = A9EAD53C20D5A78400598AA7 /* NSString+Regex.m */; };
 		A9EF488120AFE677004BE8E8 /* A_ColorHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A9EF487F20AFE677004BE8E8 /* A_ColorHelper.h */; };
@@ -35,7 +36,7 @@
 		A95491AA24636E3000983A29 /* InjectionStyleSourceRepository.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InjectionStyleSourceRepository.h; sourceTree = "<group>"; };
 		A95491AB246462B700983A29 /* StyleDictionaryProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyleDictionaryProvider.h; sourceTree = "<group>"; };
 		A95491AC246462B700983A29 /* StyleDictionaryProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StyleDictionaryProvider.m; sourceTree = "<group>"; };
-		A95491C22466651B00983A29 /* StyleSerializerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyleSerializerInterface.h; sourceTree = "<group>"; };
+		A95491C22466651B00983A29 /* StyleValueDecoderInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyleValueDecoderInterface.h; sourceTree = "<group>"; };
 		A95491CC246745B300983A29 /* UIButton+Injection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Injection.h"; sourceTree = "<group>"; };
 		A95491CD246745B300983A29 /* UIButton+Injection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Injection.m"; sourceTree = "<group>"; };
 		A97D515820A9140000B2A52A /* A_StyleManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = A_StyleManager.h; sourceTree = "<group>"; };
@@ -47,8 +48,8 @@
 		A983C25D209228BD001E0D94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9C5395920C3ADAE00EA1747 /* StyleHierarchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StyleHierarchy.h; path = A_StyleInjection/Common/StyleHierarchy.h; sourceTree = SOURCE_ROOT; };
 		A9C5395A20C3ADAE00EA1747 /* StyleHierarchy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StyleHierarchy.m; path = A_StyleInjection/Common/StyleHierarchy.m; sourceTree = SOURCE_ROOT; };
-		A9C5396220C4839200EA1747 /* StyleNormalizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyleNormalizer.h; sourceTree = "<group>"; };
-		A9C5396320C4839200EA1747 /* StyleNormalizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StyleNormalizer.m; sourceTree = "<group>"; };
+		A9C5396220C4839200EA1747 /* StyleValueDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyleValueDecoder.h; sourceTree = "<group>"; };
+		A9C5396320C4839200EA1747 /* StyleValueDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StyleValueDecoder.m; sourceTree = "<group>"; };
 		A9EAD53B20D5A78400598AA7 /* NSString+Regex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Regex.h"; sourceTree = "<group>"; };
 		A9EAD53C20D5A78400598AA7 /* NSString+Regex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Regex.m"; sourceTree = "<group>"; };
 		A9EF487F20AFE677004BE8E8 /* A_ColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A_ColorHelper.h; sourceTree = "<group>"; };
@@ -74,9 +75,9 @@
 				A95491AC246462B700983A29 /* StyleDictionaryProvider.m */,
 				A95491A624636DB600983A29 /* StylePlistProvider.h */,
 				A95491A724636DB600983A29 /* StylePlistProvider.m */,
-				A95491C22466651B00983A29 /* StyleSerializerInterface.h */,
-				A9C5396220C4839200EA1747 /* StyleNormalizer.h */,
-				A9C5396320C4839200EA1747 /* StyleNormalizer.m */,
+				A95491C22466651B00983A29 /* StyleValueDecoderInterface.h */,
+				A9C5396220C4839200EA1747 /* StyleValueDecoder.h */,
+				A9C5396320C4839200EA1747 /* StyleValueDecoder.m */,
 			);
 			path = StyleProviders;
 			sourceTree = "<group>";
@@ -144,10 +145,11 @@
 			files = (
 				A95491D62467667D00983A29 /* InjectionStyleSourceRepository.h in Headers */,
 				A983C25E209228BD001E0D94 /* A_StyleInjection.h in Headers */,
-				A9C5396420C4839200EA1747 /* StyleNormalizer.h in Headers */,
+				A9C5396420C4839200EA1747 /* StyleValueDecoder.h in Headers */,
 				A97D515A20A9140000B2A52A /* A_StyleManager.h in Headers */,
 				A9EF488120AFE677004BE8E8 /* A_ColorHelper.h in Headers */,
 				A97D515E20A9366400B2A52A /* UIView+Injuection.h in Headers */,
+				A9A3361C2480BB3F00AD4B39 /* StyleValueDecoderInterface.h in Headers */,
 				A9EAD53D20D5A78400598AA7 /* NSString+Regex.h in Headers */,
 				A9C5395B20C3ADAE00EA1747 /* StyleHierarchy.h in Headers */,
 				A95491CE246745B300983A29 /* UIButton+Injection.h in Headers */,
@@ -226,7 +228,7 @@
 				A95491A924636DB600983A29 /* StylePlistProvider.m in Sources */,
 				A95491AE246462B700983A29 /* StyleDictionaryProvider.m in Sources */,
 				A9EAD53E20D5A78400598AA7 /* NSString+Regex.m in Sources */,
-				A9C5396520C4839200EA1747 /* StyleNormalizer.m in Sources */,
+				A9C5396520C4839200EA1747 /* StyleValueDecoder.m in Sources */,
 				A9C5395C20C3ADAE00EA1747 /* StyleHierarchy.m in Sources */,
 				A9EF488220AFE677004BE8E8 /* A_ColorHelper.m in Sources */,
 				A95491CF246745B300983A29 /* UIButton+Injection.m in Sources */,
