@@ -15,6 +15,7 @@
 static char *viewStyleApplied = "aAssociatedStyleApplied";
 static char *viewStyleIdentifier = "aAssociatedStyleIdentifier";
 static char *viewParentController = "aAssociatedParentController";
+static char *viewResponsePath = "aAssociatedResponsePath";
 
 @dynamic styleIdentifier, parentController, isStyleApplied;
 
@@ -45,6 +46,13 @@ static IMP __original_DidMoveToWindow_Method_Imp;
 - (BOOL)isStyleApplied {
     id value = [self fetchAssociateValue:viewStyleApplied];
     return !value && [value boolValue];
+}
+
+- (NSArray<NSArray<NSString *> *> *)styleResponsePath {
+    return [self fetchAssociateValue:viewResponsePath];
+}
+- (void)setStyleResponsePath:(NSArray *)chain {
+    [self setAssociateValue:chain withKey:viewResponsePath type:OBJC_ASSOCIATION_RETAIN];
 }
 
 + (void)load {
@@ -85,7 +93,7 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
         return;
     }
     
-    if ([self __findParentController]) {
+    if ([self __traceResponseChain]) {
         [self setAssociateValue:@(true) withKey:viewStyleApplied type:OBJC_ASSOCIATION_COPY];
     }
     NSDictionary<NSString *, id> *setting = [[A_StyleManager shared] getNormalizedStyle:self];
@@ -100,21 +108,32 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
     }
 }
 
-- (UIViewController *)__findParentController {
-    if ([self parentController]) {
-        return [self parentController];
-    } else {
-        UIResponder *responder = self;
-        while ([responder isKindOfClass:[UIView class]])
-            responder = [responder nextResponder];
+- (BOOL)__traceResponseChain {
+    NSMutableArray<NSArray<NSString *> *> *paths = [[NSMutableArray alloc] init];
+    
+    UIResponder *responder = self;
+    while ([responder isKindOfClass:[UIView class]]) {
         
-        if (responder && [responder isKindOfClass:[UIViewController class]]) {
-            [self setParentController:(UIViewController *)responder];
-            return (UIViewController *)responder;
+        NSString *responderClass = NSStringFromClass([responder class]);
+        NSString *responderStyleID = [(UIView *)responder styleIdentifier];
+        
+        if (!responderClass) {
+            responderClass = (NSString *)[NSNull null];
         }
+        if (!responderStyleID) {
+            responderStyleID = (NSString *)[NSNull null];
+        }
+        
+        [paths addObject: @[responderClass, responderStyleID]];
+        responder = [responder nextResponder];
     }
     
-    return nil;
+    if (responder && [responder isKindOfClass:[UIViewController class]]) {
+        [self setParentController:(UIViewController *)responder];
+        [self setStyleResponsePath:paths];
+    }
+    
+    return (responder && [responder isKindOfClass:[UIViewController class]]);
 }
 
 - (void)__setupStyle:(NSDictionary *)setting {

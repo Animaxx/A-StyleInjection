@@ -8,20 +8,14 @@
 
 #import "A_StyleManager.h"
 #import "UIView+Injuection.h"
-#import "A_ColorHelper.h"
 #import "StyleValueDecoder.h"
 #import "StylePlistProvider.h"
-
-@interface UIView()
-
-- (UIViewController *)__findParentController;
-
-@end
+#import "PrivateMethodsHeader.h"
 
 @interface A_StyleManager()
 
 @property (nonatomic, strong) id<InjectionStyleSourceRepository> repository;
-@property (nonatomic, strong) id<StyleValueDecoderInterface> styleNormalizeProvider;
+@property (nonatomic, strong) id<StyleValueDecoderInterface> styleValueDecodingProvider;
 
 @end
 
@@ -32,7 +26,7 @@
     __strong static A_StyleManager *obj = nil;
     dispatch_once(&pred, ^{
         obj = [[A_StyleManager alloc] init];
-        obj.styleNormalizeProvider = [[StyleValueDecoder alloc] init];
+        obj.styleValueDecodingProvider = [[StyleValueDecoder alloc] init];
     });
     
     return obj;
@@ -40,7 +34,11 @@
 
 - (void)setupStyleSourceRepository:(id<InjectionStyleSourceRepository> _Nonnull) source {
     @synchronized (self) {
+        BOOL repositoryExist = self.repository != nil;
         self.repository = source;
+        if (repositoryExist) {
+            [self applyStyle];
+        }
     }
 }
 
@@ -58,34 +56,35 @@
 }
 
 - (NSDictionary<NSString *, id> *)getNormalizedStyle:(UIView *)view {
-    NSString *className = NSStringFromClass([view class]);
-    NSString *identifier = [view styleIdentifier];
-    UIViewController *parentController = [view __findParentController];
+    UIViewController *parentController = [view parentController];
     if (!parentController) {
         return @{};
     }
     
-    NSString *controllerName = NSStringFromClass([parentController class]);
-    
-    NSMutableArray *stylePaths = [[NSMutableArray alloc] init];
-    [stylePaths addObject:@[[NSString stringWithFormat:@"@%@", className]]];
-    
-    if (identifier) {
-        [stylePaths addObject:@[[NSString stringWithFormat:@"#%@", identifier]]];
+    NSArray<NSArray<NSString *> *> *path = [view styleResponsePath];
+    if (!path || [path count] == 0) {
+        return @{};
     }
     
-    if (controllerName) {
-        [stylePaths addObject:@[controllerName, [NSString stringWithFormat:@"@%@", className]]];
-        if (identifier) {
-            [stylePaths addObject:@[controllerName, [NSString stringWithFormat:@"#%@", identifier]]];
-        }
-    }
+    NSString *viewClassName = NSStringFromClass([view class]);
+    NSString *styleIdentifier = [view styleIdentifier];
+    NSString *parentControllerName = NSStringFromClass([parentController class]);
     
-    NSDictionary<NSString *, id> *styleSetting = [[self getSourceRepository] getStyleByKeypaths:stylePaths];
+    /*
+     Information for current view:
+     - View class name
+     - View identifier
+     - View parent controller
+     - View reponse path
+    */
+    NSDictionary<NSString *, id> *styleSetting = [[self getSourceRepository] privodeStyleConfigForView:viewClassName
+                                                                                            identifier:styleIdentifier
+                                                                                            controller:parentControllerName
+                                                                                           reponsePath:path];
     
     for (NSString *key in [styleSetting allKeys]) {
         id value = [styleSetting objectForKey:key];
-        value = [self.styleNormalizeProvider decode:value];
+        value = [self.styleValueDecodingProvider decode:value];
         [styleSetting setValue:value forKey:key];
     }
     
@@ -115,7 +114,7 @@
 }
 
 - (void)registerValueDecodeFunc:(StyleValueDecodeFuncBlock _Nonnull)block {
-    [self.styleNormalizeProvider regiesterValueDecodeFunc:block];
+    [self.styleValueDecodingProvider regiesterValueDecodeFunc:block];
 }
 
 @end

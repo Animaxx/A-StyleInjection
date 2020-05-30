@@ -70,31 +70,46 @@
         return true;
     }
 }
-- (NSDictionary<NSString *, id> *)getStyleByKeypaths:(NSArray<NSArray<NSString *> *> *)setOfKeyPaths {
+
+- (void)setupStyleSetting:(NSMutableDictionary<NSString *, id> *)styleSetting withKeypath:(NSArray<NSString *> *)keypath {
     if (!self.sourceStyleSheet) {
         if (![self _loadPlistFile]) {
-            return @{};
+            return;
         }
     }
     
-    NSMutableDictionary *setting = [[NSMutableDictionary alloc] init];
-    for (NSArray<NSString *> *itemKeyPaths in setOfKeyPaths) {
-        NSDictionary *itemDict = self.sourceStyleSheet;
-        for (NSString *itemkey in itemKeyPaths) {
-            if (itemDict && [itemDict isKindOfClass:[NSDictionary class]]) {
-                itemDict = ([itemDict objectForKey:itemkey] ? [itemDict objectForKey:itemkey] : nil);
-            } else {
-                itemDict = nil;
-                break;
-            }
-        }
-        
-        if (itemDict) {
-            [setting addEntriesFromDictionary:itemDict];
+    NSDictionary *itemDict = self.sourceStyleSheet;
+    for (NSString *itemkey in keypath) {
+        if (itemDict && [itemDict isKindOfClass:[NSDictionary class]]) {
+            itemDict = ([itemDict objectForKey:itemkey] ? [itemDict objectForKey:itemkey] : nil);
+        } else {
+            itemDict = nil;
+            break;
         }
     }
     
-    return setting;
+    if (itemDict) {
+        [styleSetting addEntriesFromDictionary:itemDict];
+    }
+}
+
+- (NSDictionary<NSString *, id> * _Nonnull)privodeStyleConfigForView:(NSString * _Nonnull)viewClass
+                                                          identifier:(NSString * _Nullable)viewIdentifier
+                                                          controller:(NSString * _Nonnull)controllerName
+                                                         reponsePath:(NSArray<NSArray<NSString *> *> * _Nonnull)paths{
+    
+    NSMutableDictionary<NSString *, id> *styleSetting = [[NSMutableDictionary alloc] init];
+    [self setupStyleSetting:styleSetting withKeypath:@[[NSString stringWithFormat:@"@%@", viewClass]]];
+    if (viewIdentifier) {
+        [self setupStyleSetting:styleSetting withKeypath:@[[NSString stringWithFormat:@"#%@", viewIdentifier]]];
+    }
+    
+    [self setupStyleSetting:styleSetting withKeypath:@[controllerName, [NSString stringWithFormat:@"@%@", viewClass]]];
+    if (viewIdentifier) {
+        [self setupStyleSetting:styleSetting withKeypath:@[controllerName, [NSString stringWithFormat:@"#%@", viewIdentifier]]];
+    }
+    
+    return styleSetting;
 }
 
 @end

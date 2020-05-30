@@ -20,6 +20,7 @@
 - [ ] [Function] Set style to specific layer
 - [ ] [Function] Set style to specific item [?]
 - [ ] [Function / Style Value] Provide animation style injuection
+- [ ] [Function] Optimize the swizzing function
 - [ ] [Function] (Measuring Performance)[https://developer.apple.com/videos/play/wwdc2018/405/]
 
 

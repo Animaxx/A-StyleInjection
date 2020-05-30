@@ -58,4 +58,11 @@
     }
 }
 
+- (NSDictionary<NSString *, id> *)privodeStyleConfigForView:(NSString *)viewClass
+                                                 identifier:(NSString *)viewIdentifier
+                                                 controller:(NSString *)controllerName
+                                                reponsePath:(NSArray<NSArray<NSString *> *> *)paths{
+    return @{};
+}
+
 @end

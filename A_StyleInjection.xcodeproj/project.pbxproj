@@ -46,6 +46,7 @@
 		A983C259209228BD001E0D94 /* A_StyleInjection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = A_StyleInjection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A983C25C209228BD001E0D94 /* A_StyleInjection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = A_StyleInjection.h; sourceTree = "<group>"; };
 		A983C25D209228BD001E0D94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9A33627248228C100AD4B39 /* PrivateMethodsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateMethodsHeader.h; sourceTree = "<group>"; };
 		A9C5395920C3ADAE00EA1747 /* StyleHierarchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StyleHierarchy.h; path = A_StyleInjection/Common/StyleHierarchy.h; sourceTree = SOURCE_ROOT; };
 		A9C5395A20C3ADAE00EA1747 /* StyleHierarchy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StyleHierarchy.m; path = A_StyleInjection/Common/StyleHierarchy.m; sourceTree = SOURCE_ROOT; };
 		A9C5396220C4839200EA1747 /* StyleValueDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyleValueDecoder.h; sourceTree = "<group>"; };
@@ -104,6 +105,7 @@
 				A95491A5246358DF00983A29 /* StyleProviders */,
 				A9EF487E20AFE3C5004BE8E8 /* Extensions */,
 				A9EF487D20AFE3AD004BE8E8 /* Common */,
+				A9A33627248228C100AD4B39 /* PrivateMethodsHeader.h */,
 				A97D515820A9140000B2A52A /* A_StyleManager.h */,
 				A97D515920A9140000B2A52A /* A_StyleManager.m */,
 				A983C25C209228BD001E0D94 /* A_StyleInjection.h */,
