@@ -20,8 +20,7 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)onClick:(id)sender {
-    [[A_StyleManager shared] setupStyleSourceRepository:[[StylePlistProvider alloc] init:@"StyleSheet_2"]];
-    [[A_StyleManager shared] applyStyle];
+    [[A_StyleManager shared] setupStyleSourceRepository:[[StylePlistProvider alloc] init:@"NewStyleSheet"]];
 }
 
 @end

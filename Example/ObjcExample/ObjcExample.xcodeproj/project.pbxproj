@@ -13,8 +13,9 @@
 		A939B1562093FC93009C3944 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A939B1552093FC93009C3944 /* Assets.xcassets */; };
 		A939B1592093FC93009C3944 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A939B1572093FC93009C3944 /* LaunchScreen.storyboard */; };
 		A939B15C2093FC94009C3944 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A939B15B2093FC94009C3944 /* main.m */; };
-		A95491D1246765FB00983A29 /* StyleSheet_2.plist in Resources */ = {isa = PBXBuildFile; fileRef = A95491D0246765FB00983A29 /* StyleSheet_2.plist */; };
+		A95491D1246765FB00983A29 /* NewStyleSheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = A95491D0246765FB00983A29 /* NewStyleSheet.plist */; };
 		A99DB4B22473186900F63B58 /* StyleChangeDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99DB4B12473186900F63B58 /* StyleChangeDemoController.m */; };
+		A9A3361F24817EF000AD4B39 /* CollectionViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3361E24817EF000AD4B39 /* CollectionViewDemoController.m */; };
 		A9EF487820AFD693004BE8E8 /* StyleSheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9EF487720AFD693004BE8E8 /* StyleSheet.plist */; };
 		A9F5D83320BD23D7004BC495 /* TableViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F5D83220BD23D7004BC495 /* TableViewDemoController.m */; };
 		A9F5D83620BD23F7004BC495 /* SimpleButtonDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F5D83520BD23F7004BC495 /* SimpleButtonDemoController.m */; };
@@ -32,10 +33,13 @@
 		A939B1582093FC93009C3944 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A939B15A2093FC94009C3944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A939B15B2093FC94009C3944 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A95491D0246765FB00983A29 /* StyleSheet_2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StyleSheet_2.plist; sourceTree = "<group>"; };
+		A95491D0246765FB00983A29 /* NewStyleSheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NewStyleSheet.plist; sourceTree = "<group>"; };
 		A96DF23D2471E224004FC6F8 /* A_StyleInjection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = A_StyleInjection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A99DB4B02473186900F63B58 /* StyleChangeDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyleChangeDemoController.h; sourceTree = "<group>"; };
 		A99DB4B12473186900F63B58 /* StyleChangeDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StyleChangeDemoController.m; sourceTree = "<group>"; };
+		A9A33618247F61F800AD4B39 /* A_StyleInjection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = A_StyleInjection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9A3361D24817EF000AD4B39 /* CollectionViewDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewDemoController.h; sourceTree = "<group>"; };
+		A9A3361E24817EF000AD4B39 /* CollectionViewDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewDemoController.m; sourceTree = "<group>"; };
 		A9EF487720AFD693004BE8E8 /* StyleSheet.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = StyleSheet.plist; sourceTree = "<group>"; };
 		A9F5D83120BD23D7004BC495 /* TableViewDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewDemoController.h; sourceTree = "<group>"; };
 		A9F5D83220BD23D7004BC495 /* TableViewDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewDemoController.m; sourceTree = "<group>"; };
@@ -80,13 +84,15 @@
 			isa = PBXGroup;
 			children = (
 				A9EF487720AFD693004BE8E8 /* StyleSheet.plist */,
-				A95491D0246765FB00983A29 /* StyleSheet_2.plist */,
+				A95491D0246765FB00983A29 /* NewStyleSheet.plist */,
 				A939B14C2093FC91009C3944 /* AppDelegate.h */,
 				A939B14D2093FC91009C3944 /* AppDelegate.m */,
 				A9F5D83720BE108D004BC495 /* ListViewController.h */,
 				A9F5D83820BE108D004BC495 /* ListViewController.m */,
 				A9F5D83120BD23D7004BC495 /* TableViewDemoController.h */,
 				A9F5D83220BD23D7004BC495 /* TableViewDemoController.m */,
+				A9A3361D24817EF000AD4B39 /* CollectionViewDemoController.h */,
+				A9A3361E24817EF000AD4B39 /* CollectionViewDemoController.m */,
 				A9F5D83420BD23F7004BC495 /* SimpleButtonDemoController.h */,
 				A9F5D83520BD23F7004BC495 /* SimpleButtonDemoController.m */,
 				A99DB4B02473186900F63B58 /* StyleChangeDemoController.h */,
@@ -103,6 +109,7 @@
 		A95491C32466850500983A29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A9A33618247F61F800AD4B39 /* A_StyleInjection.framework */,
 				A96DF23D2471E224004FC6F8 /* A_StyleInjection.framework */,
 				0522893B4225C40AE399AEA2 /* Pods_ObjcExample.framework */,
 			);
@@ -129,7 +136,7 @@
 				A939B1452093FC91009C3944 /* Sources */,
 				A939B1462093FC91009C3944 /* Frameworks */,
 				A939B1472093FC91009C3944 /* Resources */,
-				1330FCD8CBC8F9CA3B2B63CD /* [CP] Embed Pods Frameworks */,
+				7FA6D75BE04DFD4705651D58 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -179,7 +186,7 @@
 			files = (
 				A9EF487820AFD693004BE8E8 /* StyleSheet.plist in Resources */,
 				A939B1592093FC93009C3944 /* LaunchScreen.storyboard in Resources */,
-				A95491D1246765FB00983A29 /* StyleSheet_2.plist in Resources */,
+				A95491D1246765FB00983A29 /* NewStyleSheet.plist in Resources */,
 				A939B1562093FC93009C3944 /* Assets.xcassets in Resources */,
 				A939B1542093FC91009C3944 /* Main.storyboard in Resources */,
 			);
@@ -188,23 +195,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1330FCD8CBC8F9CA3B2B63CD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ObjcExample/Pods-ObjcExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ObjcExample/Pods-ObjcExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObjcExample/Pods-ObjcExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		39EF49FD741A08D45BDD2B89 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -227,6 +217,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7FA6D75BE04DFD4705651D58 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ObjcExample/Pods-ObjcExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ObjcExample/Pods-ObjcExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObjcExample/Pods-ObjcExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -239,6 +246,7 @@
 				A939B15C2093FC94009C3944 /* main.m in Sources */,
 				A9F5D83620BD23F7004BC495 /* SimpleButtonDemoController.m in Sources */,
 				A99DB4B22473186900F63B58 /* StyleChangeDemoController.m in Sources */,
+				A9A3361F24817EF000AD4B39 /* CollectionViewDemoController.m in Sources */,
 				A939B14E2093FC91009C3944 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,7 +324,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -368,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -383,7 +391,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YL2SUU3UYP;
 				INFOPLIST_FILE = ObjcExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -402,7 +410,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YL2SUU3UYP;
 				INFOPLIST_FILE = ObjcExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

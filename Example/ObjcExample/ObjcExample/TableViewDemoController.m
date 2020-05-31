@@ -8,7 +8,7 @@
 
 #import "TableViewDemoController.h"
 
-@interface TableViewDemoController () <UITableViewDataSource, UITableViewDelegate>
+@interface TableViewDemoController () <UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
@@ -21,6 +21,7 @@
     
     self.tableview.dataSource = self;
     self.tableview.delegate = self;
+    self.tableview.prefetchDataSource = self;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -35,7 +36,11 @@
     
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
 }
+
+- (void)tableView:(UITableView *)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    NSLog(@"%@", indexPaths);
+}
+
 
 @end

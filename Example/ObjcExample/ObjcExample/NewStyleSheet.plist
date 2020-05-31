@@ -2,6 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>@UIView</key>
+	<dict>
+		<key>backgroundColor</key>
+		<string>#D4E2E2</string>
+	</dict>
+	<key>@UILabel</key>
+	<dict>
+		<key>textColor</key>
+		<string>#0E0E0E</string>
+		<key>font</key>
+		<string>$&quot;SanFranciscoRounded-Medium&quot;:16</string>
+	</dict>
+	<key>@UINavigationBar</key>
+	<dict>
+		<key>barTintColor</key>
+		<string>#F9E7DF</string>
+	</dict>
 	<key>TableViewDemoController</key>
 	<dict>
 		<key>#cellLabel</key>
@@ -19,29 +36,12 @@
 			<integer>3</integer>
 		</dict>
 	</dict>
-	<key>@UILabel</key>
-	<dict>
-		<key>textColor</key>
-		<string>#756180</string>
-		<key>font</key>
-		<string>$&quot;SanFranciscoRounded-Medium&quot;:16</string>
-	</dict>
-	<key>@UINavigationBar</key>
-	<dict>
-		<key>barTintColor</key>
-		<string>#693B80</string>
-	</dict>
 	<key>UINavigationController</key>
 	<dict>
 		<key>@UIView</key>
 		<dict>
 			<key>backgroundColor</key>
-			<string>#000000</string>
-		</dict>
-		<key>@UILabel</key>
-		<dict>
-			<key>textColor</key>
-			<string>#CCCCCC</string>
+			<string>#E4EBE5</string>
 		</dict>
 	</dict>
 	<key>ListViewController</key>
@@ -53,10 +53,12 @@
 		</dict>
 		<key>#demo1</key>
 		<dict>
+			<key>backgroundColor</key>
+			<string>#D4E2E2</string>
 			<key>font</key>
 			<string>$&quot;Chalkduster&quot;:20</string>
 			<key>textColor</key>
-			<string>#F4B942</string>
+			<string>#F5B09C</string>
 			<key>text</key>
 			<string>Demo</string>
 		</dict>
