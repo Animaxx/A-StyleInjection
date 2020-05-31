@@ -67,8 +67,12 @@
     }
     
     NSString *viewClassName = NSStringFromClass([view class]);
+    viewClassName = [[viewClassName componentsSeparatedByString:@"."] lastObject];
+    
     NSString *styleIdentifier = [view styleIdentifier];
+    
     NSString *parentControllerName = NSStringFromClass([parentController class]);
+    parentControllerName = [[parentControllerName componentsSeparatedByString:@"."] lastObject];
     
     /*
      Information for current view:
