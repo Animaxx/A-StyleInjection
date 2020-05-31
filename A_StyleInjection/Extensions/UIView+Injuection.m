@@ -94,9 +94,11 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
         return;
     }
     
-    if ([self __traceResponseChain]) {
-        [self setAssociateValue:@(true) withKey:viewStyleApplied type:OBJC_ASSOCIATION_COPY];
+    if (![self __traceResponseChain]) {
+        return;
     }
+    
+    [self setAssociateValue:@(true) withKey:viewStyleApplied type:OBJC_ASSOCIATION_COPY];
     NSDictionary<NSString *, id> *setting = [[A_StyleManager shared] getNormalizedStyle:self];
     if (setting && [setting count] > 0) {
         [self __setupStyle:setting];
@@ -104,12 +106,29 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
     
     if (isReloadSubviews) {
         for (UIView *subview in [self subviews]) {
+            // Set parent controller and response path to subview to reduce consuming
+            // Note: if current controller has child then subview might not be the same parent controller
+            if ([[[self parentController] childViewControllers] count] <= 0) {
+                [subview setParentController:[self parentController]];
+                NSMutableArray<NSArray<NSString *> *> * subpath = [[self styleResponsePath] mutableCopy];
+                NSString *styleId = [subview styleIdentifier];
+                if (!styleId) {
+                    styleId = (NSString *)[NSNull null];
+                }
+
+                [subpath addObject:@[ NSStringFromClass([subview class]), styleId]];
+            }
+
             [subview loadStyle:isReloadSubviews forceReload:forceReload];
         }
     }
 }
 
 - (BOOL)__traceResponseChain {
+    if ([self parentController] && [self styleResponsePath] && [[self styleResponsePath] count] > 0) {
+        return true;
+    }
+    
     NSMutableArray<NSArray<NSString *> *> *paths = [[NSMutableArray alloc] init];
     
     UIResponder *responder = self;
@@ -125,7 +144,8 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
             responderStyleID = (NSString *)[NSNull null];
         }
         
-        [paths addObject: @[responderClass, responderStyleID]];
+        [paths insertObject:@[responderClass, responderStyleID] atIndex:0];
+        
         responder = [responder nextResponder];
     }
     
