@@ -38,13 +38,3 @@
 
 
 @end
-
-// Private header functions
-@interface A_StyleManager()
-
-/// Fetch style setting for appointed view
-///
-/// @param view Dictionary of style setting
-- (NSDictionary<NSString *, id> * _Nonnull)getNormalizedStyle:(UIView * _Nonnull)view;
-
-@end

@@ -1,10 +1,10 @@
 
 Pod::Spec.new do |s|
   s.name             = "A_StyleInjection"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "Style Injection"
   s.description      = <<-DESC
-Allow to customize whole project style via configuration file, at any moment of development life cycle
+Allow to customize whole project style without extra coding, at any moment of development life cycle
                        DESC
 
   s.license          = "MIT"

@@ -9,6 +9,7 @@
 #import "UIView+Injuection.h"
 #import <objc/runtime.h>
 #import "A_StyleManager.h"
+#import "PrivateMethodsHeader.h"
 
 @implementation UIView(Injuection)
 
