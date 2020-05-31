@@ -73,7 +73,7 @@ A_StyleManager.shared().setupStyleSourceRepository(StylePlistProvider("StyleShee
 ![PhoneScreen_1](./Example/ReadmePhotos/PhoneScreen_2.png)
 
 #### Apple new style:
-In the middle of app is running, style can changed by updated `StyleSourceRepository`. However, the style already applied won't be traceback change, in this case, `applyStyle` function can force window update.
+In the middle of app is running, style can changed by updated `StyleSourceRepository`; if the style applied before, the `applyStyle` function will also call which will force window style update.
 
 ```swift
 A_StyleManager.shared.applyStyle()

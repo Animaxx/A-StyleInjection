@@ -110,7 +110,6 @@
     if ([window.rootViewController isKindOfClass:[UINavigationController class]]) {
         [[[(UINavigationController *)window.rootViewController visibleViewController] view] loadStyle:YES forceReload:YES];
     }
-
 }
 
 - (void)registerValueDecodeFunc:(StyleValueDecodeFuncBlock _Nonnull)block {
