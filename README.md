@@ -10,7 +10,7 @@
 
 #### Basic Example:
 
-Create file named ***StyleSheet.plist*** to the project as below , no code is needed, the style all automatically apply to all controllers.
+Install Style Injuection project and create file named ***StyleSheet.plist*** to the project in main target as below, no code is needed, the style all automatically apply to whole project.
 
 
 
@@ -18,7 +18,7 @@ Create file named ***StyleSheet.plist*** to the project as below , no code is ne
 
 ![StyleSetting_1](./Example/ReadmePhotos/StyleSetting_1.png)
 
-More detail about the rule of *StyleSheet.plist*, pleae check out the [Style Plist Provider](#Style Plist Provider) section
+More detail about the rule of *StyleSheet.plist*, pleae check out the  [Style Plist Provider](#Style_Plist_Provider) section
 
 
 
