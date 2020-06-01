@@ -11,8 +11,10 @@
 - [x] [Document] Document force style refresh function
 - [x] [Function] Allow to customize style value normalize function
 - [x] [Verify] style injection in collection view
+- [x] [Function] Allow to customize style format base on StyleSourceRepository
+- [ ] [Function / Style Value] Provide Image loading style format
 - [ ] [Function] Drak mode switch support
-- [ ] [Function] Allow to customize style reading format
+- [ ] [Function] Cache style config settings
 - [ ] [Compatibility] Fit for React Native
 - [ ] [Compatibility] Fit for Flutter
 - [ ] [Style Value]  load image format

@@ -3,7 +3,59 @@
 **A Style Injection** provide the injection way to customize whole iOS application base on the single configuration file without extra coding.
 
 
-## Style Sheet Format and Rules
+
+## Usage:
+
+
+
+#### Basic Example:
+
+Create file named ***StyleSheet.plist*** to the project as below , no code is needed, the style all automatically apply to all controllers.
+
+
+
+**Style Configuration and Results**
+
+![StyleSetting_1](./Example/ReadmePhotos/StyleSetting_1.png)
+
+More detail about the rule of *StyleSheet.plist*, pleae check out the [Style Plist Provider](#Style Plist Provider) section
+
+
+
+
+#### Update style to different style sheet
+
+```swift
+A_StyleManager.shared().setupStyleSourceRepository(StylePlistProvider("NewStyleSheet"))
+```
+
+```objc
+[[A_InjuectionManager shared] setupStyleSourceRepository:
+      [[StylePlistProvider alloc] init:@"NewStyleSheet"]];
+```
+
+
+
+Once the `setupStyleSourceRepository` function called, the whole project style will be updated immediately.
+
+
+
+**New Style configuration and result**
+
+![StyleSetting_1](./Example/ReadmePhotos/StyleSetting_2.png)
+
+
+
+## Style Source Repository
+
+Style Injuection allow to have different way to provide the style data, all the provider are  implemented protocol `InjectionStyleSourceRepository.  
+By default, Style Injuection use `StylePlistProvider` which read config from .plist file.
+
+
+
+### Style Plist Provider
+
+By default, Style Plist Provider reading the file named `StyleSheet.plist`. The specified file can be changed by initialize StylePlistProvider.
 
 In the style map, style item are follow below rules:
 
@@ -26,70 +78,14 @@ In the style map, style item are follow below rules:
    
    - The key as property can be class/structure, and in some case need to set the property to the sub-property; we can using `(dot .)` in this case:
      + For Example, apply these two style setting to set the view to be rounded corners; 
-     ```
+```
      layer.cornerRadius : 10
      clipsToBounds : true
-     ```
-   
+```
+
    - In the plist, the value type is limited, the StyleInjection libaray provide format to allow convert string to different type of value, the full list in "[style set value format](#style_set_value_format)" section, below is some example:
      + Color: it must start with `#` and come along with 6 digit, e.g. `#A0A0A0`  
-     + Font: it must start with `$` come along with `""` has Font name init, then `:` with size of Font, e.g. `$"Helvetica Neue":17`
-
-
-
-## Usage Examples:
-
-#### Basic usage:
-
-Create file named **StyleSheet.plist** to the project as below, no code needed, the style all automatically apply to all controllers.
-
-**Style configuration**
-
-<img src="./Example/ReadmePhotos/StyleSetting_1.png" alt="StyleSetting_1" width="40%" />
-
-**Runtime results**
-
-![PhoneScreen_1](./Example/ReadmePhotos/PhoneScreen_1.png)
-
-#### Load from specified style file
-
-For example, load `StyleSheet_2.plist` as style source:
-
-```swift
-A_StyleManager.shared().setupStyleSourceRepository(StylePlistProvider("StyleSheet_2"))
-```
-
-```objc
-[[A_InjuectionManager shared] setupStyleSourceRepository:
-      [[StylePlistProvider alloc] init:@"StyleSheet_2"]];
-```
-
-**StyleSheet_2 configuration**
-
-<img src="./Example/ReadmePhotos/StyleSetting_1.png" alt="StyleSetting_2" width="40%" />
-
-**Runtime Results:**
-
-![PhoneScreen_1](./Example/ReadmePhotos/PhoneScreen_2.png)
-
-#### Apple new style:
-In the middle of app is running, style can changed by updated `StyleSourceRepository`; if the style applied before, the `applyStyle` function will also call which will force window style update.
-
-```swift
-A_StyleManager.shared.applyStyle()
-```
-```objc
-[[A_StyleManager shared] applyStyle];
-```
-
-
-
-
-## Installation
-Cocoa Pod install:
-```
-  pod 'A_StyleInjection'
-```
+     + Font: it must start with `$` come along with `""` has Font name init, then `:` with size of Font, e.g. `$"Helvetica Neue":17
 
 
 
@@ -118,4 +114,12 @@ Cocoa Pod install:
 | **disabledTitleColor** | `titleColorForState:Disabled` |
 | **selectedTitleColor** | `titleColorForState:Selected` |
 
+
+
+## Installation
+
+Cocoa Pod install:
+```
+  pod 'A_StyleInjection'
+```
 
