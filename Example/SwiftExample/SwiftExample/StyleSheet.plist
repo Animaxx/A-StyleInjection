@@ -65,6 +65,8 @@
 			<string>#CCBBDD</string>
 			<key>textColor</key>
 			<string>#00FFFF</string>
+			<key>text</key>
+			<string>Table View Demo</string>
 		</dict>
 	</dict>
 	<key>SimpleButtonDemoController</key>

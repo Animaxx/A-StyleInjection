@@ -8,14 +8,15 @@
 
 #import "A_StyleManager.h"
 #import "UIView+Injuection.h"
-#import "StyleValueDecoder.h"
 #import "StylePlistProvider.h"
 #import "PrivateMethodsHeader.h"
+
+#import "SystemStyleValueDecoderFactory.h"
 
 @interface A_StyleManager()
 
 @property (nonatomic, strong) id<InjectionStyleSourceRepository> repository;
-@property (nonatomic, strong) id<StyleValueDecoderInterface> styleValueDecodingProvider;
+@property (nonatomic, strong) NSMutableSet<id<StyleValueDecoderInterface>> *styleDecoderSet;
 
 @end
 
@@ -26,10 +27,15 @@
     __strong static A_StyleManager *obj = nil;
     dispatch_once(&pred, ^{
         obj = [[A_StyleManager alloc] init];
-        obj.styleValueDecodingProvider = [[StyleValueDecoder alloc] init];
+        obj.styleDecoderSet = [[NSMutableSet alloc] init];
+        [A_StyleManager _preloadDefaultDecoder:obj.styleDecoderSet];
     });
     
     return obj;
+}
++ (void)_preloadDefaultDecoder:(NSMutableSet<id<StyleValueDecoderInterface>> *)decoderSet {
+    SystemStyleValueDecoderFactory *factory = [[SystemStyleValueDecoderFactory alloc] init];
+    [decoderSet unionSet:[factory createSystemDefaultStyleDecoders]];
 }
 
 - (void)setupStyleSourceRepository:(id<InjectionStyleSourceRepository> _Nonnull) source {
@@ -55,15 +61,17 @@
     }
 }
 
-- (NSDictionary<NSString *, id> *)getNormalizedStyle:(UIView *)view {
+- (void)fetchNormalizedStyle:(UIView *)view completed:(void (^)(NSDictionary<NSString *, id> *styleSetting))block {
     UIViewController *parentController = [view parentController];
     if (!parentController) {
-        return @{};
+        block(@{});
+        return;
     }
     
     NSArray<NSArray<NSString *> *> *path = [view styleResponsePath];
     if (!path || [path count] == 0) {
-        return @{};
+        block(@{});
+        return;
     }
     
     NSString *viewClassName = NSStringFromClass([view class]);
@@ -81,18 +89,26 @@
      - View parent controller
      - View reponse path
     */
-    NSDictionary<NSString *, id> *styleSetting = [[self getSourceRepository] privodeStyleConfigForView:viewClassName
-                                                                                            identifier:styleIdentifier
-                                                                                            controller:parentControllerName
-                                                                                           reponsePath:path];
-    
-    for (NSString *key in [styleSetting allKeys]) {
-        id value = [styleSetting objectForKey:key];
-        value = [self.styleValueDecodingProvider decode:value];
-        [styleSetting setValue:value forKey:key];
+    [[self getSourceRepository] privodeStyleConfigForView:viewClassName identifier:styleIdentifier controller:parentControllerName reponsePath:path completion:^(NSDictionary<NSString *,id> * _Nonnull styleSetting) {
+        
+        for (NSString *key in [styleSetting allKeys]) {
+            id value = [styleSetting objectForKey:key];
+            value = [self _decodeValue:value];
+            [styleSetting setValue:value forKey:key];
+        }
+        
+        block(styleSetting);
+    }];
+}
+- (id)_decodeValue:(id)rawValue {
+    id output = nil;
+    for (id<StyleValueDecoderInterface> item in self.styleDecoderSet) {
+        output = [item tryDecode:rawValue];
+        if (output) {
+            return output;
+        }
     }
-    
-    return styleSetting;
+    return rawValue;
 }
 
 - (void)applyStyle {
@@ -116,8 +132,10 @@
     }
 }
 
-- (void)registerValueDecodeFunc:(StyleValueDecodeFuncBlock _Nonnull)block {
-    [self.styleValueDecodingProvider regiesterValueDecodeFunc:block];
+- (void)registerValueDecoder:(id<StyleValueDecoderInterface>)decoder {
+    @synchronized (self) {
+        [self.styleDecoderSet addObject:decoder];
+    }
 }
 
 @end

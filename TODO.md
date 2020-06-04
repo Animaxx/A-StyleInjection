@@ -12,8 +12,10 @@
 - [x] [Function] Allow to customize style value normalize function
 - [x] [Verify] style injection in collection view
 - [x] [Function] Allow to customize style format base on StyleSourceRepository
-- [ ] [Function / Style Value] Provide Image loading style format
-- [ ] [Function] Drak mode switch support
+- [x] [Function / Style Value] Provide Image loading style format
+- [ ] [Function / Style Value] StylePlistProvider read setting base on different status (language / Drak mode)
+
+- [ ] [Function] Add JSON style source provider
 - [ ] [Function] Cache style config settings
 - [ ] [Compatibility] Fit for React Native
 - [ ] [Compatibility] Fit for Flutter

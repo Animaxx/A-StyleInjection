@@ -99,29 +99,41 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
     }
     
     [self setAssociateValue:@(true) withKey:viewStyleApplied type:OBJC_ASSOCIATION_COPY];
-    NSDictionary<NSString *, id> *setting = [[A_StyleManager shared] getNormalizedStyle:self];
-    if (setting && [setting count] > 0) {
-        [self __setupStyle:setting];
-    }
     
-    if (isReloadSubviews) {
-        for (UIView *subview in [self subviews]) {
+    __weak UIView *blockSelf = self;
+    
+    void(^loadSubviewsStyle)(void)  = ^ {
+        for (UIView *subview in [blockSelf subviews]) {
+            
             // Set parent controller and response path to subview to reduce consuming
             // Note: if current controller has child then subview might not be the same parent controller
-            if ([[[self parentController] childViewControllers] count] <= 0) {
-                [subview setParentController:[self parentController]];
-                NSMutableArray<NSArray<NSString *> *> * subpath = [[self styleResponsePath] mutableCopy];
+            if ([[[blockSelf parentController] childViewControllers] count] <= 0) {
+                [subview setParentController:[blockSelf parentController]];
+                NSMutableArray<NSArray<NSString *> *> * subpath = [[blockSelf styleResponsePath] mutableCopy];
                 NSString *styleId = [subview styleIdentifier];
                 if (!styleId) {
                     styleId = (NSString *)[NSNull null];
                 }
-
                 [subpath addObject:@[ NSStringFromClass([subview class]), styleId]];
             }
-
             [subview loadStyle:isReloadSubviews forceReload:forceReload];
         }
+    };
+    
+    [[A_StyleManager shared] fetchNormalizedStyle:self completed:^(NSDictionary<NSString *,id> * _Nonnull styleSetting) {
+        if (styleSetting && [styleSetting count] > 0) {
+            [blockSelf __setupStyle:styleSetting];
+        }
+        
+        if (isReloadSubviews && [[[blockSelf parentController] childViewControllers] count] <= 0) {
+            loadSubviewsStyle();
+        }
+    }];
+    
+    if (isReloadSubviews && [[[self parentController] childViewControllers] count] > 0) {
+        loadSubviewsStyle();
     }
+    
 }
 
 - (BOOL)__traceResponseChain {
@@ -158,21 +170,32 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
 }
 
 - (void)__setupStyle:(NSDictionary *)setting {
-    for (NSString *key in setting) {
-        id itemValue = [setting objectForKey:key];
-        [self injuectStyle:itemValue tokey:key];
+    void(^runBlock)(void)  = ^ {
+        for (NSString *key in setting) {
+            id itemValue = [setting objectForKey:key];
+            [self injuectStyle:itemValue tokey:key];
+        }
+    };
+    if ([NSThread isMainThread]) {
+        runBlock();
+    } else {
+        dispatch_async(dispatch_get_main_queue(), runBlock);
     }
 }
 
 - (void)injuectStyle:(id)value tokey:(NSString *)keypath {
+    NSAssert(NSThread.isMainThread, @"[Style Manager Error]\nStyle need to set in MainThread: %@",
+             [NSThread callStackSymbols]);
+    
     if ([self __verifyInjuectStyle:value tokey:keypath]) {
         @try {
             [self setValue:value forKeyPath:keypath];
         } @catch (NSException *ex) {
-            NSLog(@"Set style failed with key %@ \nerror: %@ ", keypath, ex);
+            NSLog(@"[Style Manager Error]\nSet style failed to key `%@` with value: %@ \n              error: %@ ",
+                  keypath, value, ex);
         }
     } else {
-        NSLog(@"Set style with incorrect type: key %@", keypath);
+        NSLog(@"[Style Manager Error]\nSet style with incorrect type: key %@", keypath);
     }
 }
 - (BOOL)__verifyInjuectStyle:(id)value tokey:(NSString *)keypath {

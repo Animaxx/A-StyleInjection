@@ -58,11 +58,13 @@
     }
 }
 
-- (NSDictionary<NSString *, id> *)privodeStyleConfigForView:(NSString *)viewClass
-                                                 identifier:(NSString *)viewIdentifier
-                                                 controller:(NSString *)controllerName
-                                                reponsePath:(NSArray<NSArray<NSString *> *> *)paths{
-    return @{};
+- (void)privodeStyleConfigForView:(NSString * _Nonnull)viewClass
+                       identifier:(NSString * _Nullable)viewIdentifier
+                       controller:(NSString * _Nonnull)controllerName
+                      reponsePath:(NSArray<NSArray<NSString *> *> * _Nonnull)paths
+                       completion:(void (^_Nonnull)(NSDictionary<NSString *, id> * _Nonnull styleSetting))block {
+    // TODO:
+    block(@{});
 }
 
 @end

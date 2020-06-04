@@ -93,23 +93,23 @@
     }
 }
 
-- (NSDictionary<NSString *, id> * _Nonnull)privodeStyleConfigForView:(NSString * _Nonnull)viewClass
-                                                          identifier:(NSString * _Nullable)viewIdentifier
-                                                          controller:(NSString * _Nonnull)controllerName
-                                                         reponsePath:(NSArray<NSArray<NSString *> *> * _Nonnull)paths{
+- (void)privodeStyleConfigForView:(NSString * _Nonnull)viewClass
+                       identifier:(NSString * _Nullable)viewIdentifier
+                       controller:(NSString * _Nonnull)controllerName
+                      reponsePath:(NSArray<NSArray<NSString *> *> * _Nonnull)paths
+                       completion:(void (^_Nonnull)(NSDictionary<NSString *, id> * _Nonnull styleSetting))block {
     
     NSMutableDictionary<NSString *, id> *styleSetting = [[NSMutableDictionary alloc] init];
     [self setupStyleSetting:styleSetting withKeypath:@[[NSString stringWithFormat:@"@%@", viewClass]]];
     if (viewIdentifier) {
         [self setupStyleSetting:styleSetting withKeypath:@[[NSString stringWithFormat:@"#%@", viewIdentifier]]];
     }
-    
     [self setupStyleSetting:styleSetting withKeypath:@[controllerName, [NSString stringWithFormat:@"@%@", viewClass]]];
     if (viewIdentifier) {
         [self setupStyleSetting:styleSetting withKeypath:@[controllerName, [NSString stringWithFormat:@"#%@", viewIdentifier]]];
     }
     
-    return styleSetting;
+    block(styleSetting);
 }
 
 @end

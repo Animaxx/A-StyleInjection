@@ -26,7 +26,8 @@
 /// Fetch style setting for appointed view
 ///
 /// @param view Dictionary of style setting
-- (NSDictionary<NSString *, id> * _Nonnull)getNormalizedStyle:(UIView * _Nonnull)view;
+- (void)fetchNormalizedStyle:(UIView * _Nonnull)view
+                   completed:(void (^_Nonnull)(NSDictionary<NSString *, id> * _Nonnull styleSetting))block;
 
 @end
 

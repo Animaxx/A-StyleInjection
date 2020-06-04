@@ -9,9 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "StyleValueDecoderInterface.h"
 
-@interface StyleValueDecoder : NSObject<StyleValueDecoderInterface>
-
-- (id _Nonnull)decode:(id _Nonnull)rawValue;
-- (void)regiesterValueDecodeFunc:(StyleValueDecodeFuncBlock _Nonnull)funcBlock;
+@interface DefaultStyleDecoder : NSObject<StyleValueDecoderInterface>
 
 @end

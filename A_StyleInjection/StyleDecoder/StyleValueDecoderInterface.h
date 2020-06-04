@@ -7,11 +7,10 @@
 //
 
 
-typedef id _Nullable (^StyleValueDecodeFuncBlock)(id _Nonnull setting);
+typedef id _Nullable (^StyleValueDecodeFuncBlock)(id _Nonnull rawValue);
 
 @protocol StyleValueDecoderInterface <NSObject>
 
-- (id _Nonnull)decode:(id _Nonnull)rawValue;
-- (void)regiesterValueDecodeFunc:(StyleValueDecodeFuncBlock _Nonnull)funcBlock;
+- (id _Nullable)tryDecode:(id _Nonnull)rawValue;
 
 @end
