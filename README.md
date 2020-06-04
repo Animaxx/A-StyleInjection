@@ -48,7 +48,7 @@ Once the `setupStyleSourceRepository` function called, the whole project style w
 
 ## Style Source Repository
 
-Style Injuection allow to have different way to provide the style data, all the provider are  implemented protocol `InjectionStyleSourceRepository.  
+Style Injuection allow to have different way to provide the style data, all the provider are  implemented protocol `InjectionStyleSourceRepository`.  
 By default, Style Injuection use `StylePlistProvider` which read config from .plist file.
 
 
@@ -83,7 +83,7 @@ In the style map, style item are follow below rules:
      clipsToBounds : true
 ```
 
-   - In the plist, the value type is limited, the StyleInjection libaray provide format to allow convert string to different type of value, the full list in "[style set value format](#style_set_value_format)" section, below is some example:
+   - In the plist, the value type is limited, the StyleInjection libaray provide format to allow convert string to different type of value, the full list in "[Format of Style value](##Format_of_Style_value)" section, below is some example:
      + Color: it must start with `#` and come along with 6 digit, e.g. `#A0A0A0`  
      + Font: it must start with `$` come along with `""` has Font name init, then `:` with size of Font, e.g. `$"Helvetica Neue":17
 
