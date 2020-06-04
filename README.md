@@ -14,7 +14,13 @@ Install Style Injuection project and create file named ***StyleSheet.plist*** to
 
 
 
-**Style Configuration and Results**
+You can also apply specific style to specific element by set the `styleIdentifIer` in Storyboard.
+
+<img src="./Example/ReadmePhotos/StyleIdentifIer_Storyboard.png" alt="StyleIdentifIer_Storyboard" style="zoom:50%;" />
+
+
+
+**Sample Style Configuration and Runtime Results**
 
 ![StyleSetting_1](./Example/ReadmePhotos/StyleSetting_1.png)
 
@@ -55,15 +61,16 @@ By default, Style Injuection use `StylePlistProvider` which read config from .pl
 
 ### Style Plist Provider
 
-By default, Style Plist Provider reading the file named `StyleSheet.plist`. The specified file can be changed by initialize StylePlistProvider.
+By default, Style Plist Provider reading the file named `StyleSheet.plist`. The file name can be changed when initialize StylePlistProvider.
 
-In the style map, style item are follow below rules:
+Style plist are follow below rules:
 
 1. **Multilayer style map**:
-   - First layer can be either the class name of UIViewController or Type/Name style set  
-   - Second layer cannot be the class name of UIViewController, only can be the name of Type/Name style set
+   - First layer can be either the class name of UIViewController or Type of UIView, for example:
+     - `DemoViewController`or `@UILabel`
+   - Second layer cannot be the class name of UIViewController, only can be the name of Type of UIView 
    - When the first layer is the class name of UIViewController, that means all the children style set are apply under this UIViewController
-   - When the first layer is the type/name style set, which means the style set will apply globally with lower priority
+   - When the first layer is Type of UIView, which means the style set will apply globally with lower priority
 
 2. **Type style set**:  
    - When the key start with special character `@` means apple the style setting to the type of controls
@@ -85,17 +92,22 @@ In the style map, style item are follow below rules:
 
    - In the plist, the value type is limited, the StyleInjection libaray provide format to allow convert string to different type of value, the full list in "[Format of Style value](##Format_of_Style_value)" section, below is some example:
      + Color: it must start with `#` and come along with 6 digit, e.g. `#A0A0A0`  
-     + Font: it must start with `$` come along with `""` has Font name init, then `:` with size of Font, e.g. `$"Helvetica Neue":17
+     + Font: it must start with `$` come along with `""` has Font name init, then `:` with size of Font, e.g. `$"Helvetica Neue":17`
 
 
 
-## Format of Style value
+## Style value decoding
 
-| Type  | Format                   | Example                | Desc |
+Since some of the value will beyond String and Number type, `StyleValueDecoderInterface` is the protocol for implement value decoder.
+
+By default, library provided below decoding rule for basic usage:
+
+| Type  | Format                   | Example                | **Description** |
 | ----- | ------------------------ | ---------------------- | ---- |
-| **Color** | \# with 6 digit          | `#A0A0A0`             | Create UICOlor |
-| **CGColor** | CG\# with 6 digit | `#A0A0A0` | Create CGColorRef |
-| **Font** | $" Font name ":Font Size | `$"Helvetica Neue":17` | Create Font |
+| **Color** | \# with 6 digit          | `#A0A0A0`             | Create UIColor, it must be # follow 6 digit Hex |
+| **CGColor** | CG\# with 6 digit | `#A0A0A0` | Create CGColorRef, it must be # follow 6 digit Hex |
+| **Font** | $" Font name ":Font Size | `$"Helvetica Neue":17` | Create Font, if font name not exist, will use system font |
+| **UIImage** | IMG(image name) | `IMG(imageName)` | Create image from main bundle, image name cannot be special character. |
 
 
 
