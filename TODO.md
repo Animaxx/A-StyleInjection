@@ -14,7 +14,7 @@
 - [x] [Function] Allow to customize style format base on StyleSourceRepository
 - [x] [Function / Style Value] Provide Image loading style format
 - [ ] [Function / Style Value] StylePlistProvider read setting base on different status (language / Drak mode)
-
+- [ ] [Function / Style Value] Add transform format
 - [ ] [Function] Add JSON style source provider
 - [ ] [Function] Cache style config settings
 - [ ] [Compatibility] Fit for React Native

@@ -71,6 +71,11 @@
 	</dict>
 	<key>SimpleButtonDemoController</key>
 	<dict>
+		<key>@UIImageView</key>
+		<dict>
+			<key>image</key>
+			<string>IMG(test)</string>
+		</dict>
 		<key>#theButton</key>
 		<dict>
 			<key>normalTitle</key>
