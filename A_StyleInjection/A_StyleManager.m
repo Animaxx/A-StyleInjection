@@ -29,6 +29,7 @@
         obj = [[A_StyleManager alloc] init];
         obj.styleDecoderSet = [[NSMutableSet alloc] init];
         [A_StyleManager _preloadDefaultDecoder:obj.styleDecoderSet];
+        obj.enableDebug = false;
     });
     
     return obj;

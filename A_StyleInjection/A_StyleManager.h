@@ -15,6 +15,10 @@
 
 + (A_StyleManager * _Nonnull)shared;
 
+
+/// Should display the debug information to console
+@property (nonatomic) BOOL enableDebug;
+
 - (instancetype _Nonnull) init __attribute__((unavailable("init not available")));
 
 /// Setup the style source repository. Style will read from the appointed repository  after setstyle but will not affected the style already applied to view

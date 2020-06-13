@@ -7,7 +7,7 @@
 //
 
 #import "DefaultStyleDecoder.h"
-#import "A_ColorHelper.h"
+#import "_ColorHelper.h"
 #import "NSString+Regex.h"
 
 @implementation DefaultStyleDecoder
@@ -24,6 +24,9 @@
     output = [self __convertCGColor:rawValue];
     if (output) return output;
     
+    output = [self __convertUIImage:rawValue];
+    if (output) return output;
+    
     return output;
 }
 
@@ -32,7 +35,7 @@
     
     //color format example: #000000
     if ([inputValue matchRegexFormat:@"^#(\\d|[A-F]){6}$"]) {
-        return [A_ColorHelper A_ColorMakeFormString:inputValue];
+        return [_ColorHelper CrateColorForm:inputValue];
     }
     return nil;
 }
@@ -66,7 +69,7 @@
     
     //color format example: CG#000000
     if ([inputValue matchRegexFormat:@"^CG#(\\d|[A-F]){6}$"]) {
-        return (id)[A_ColorHelper A_ColorMakeFormString:[inputValue substringFromIndex:2]].CGColor;
+        return (id)[_ColorHelper CrateColorForm:[inputValue substringFromIndex:2]].CGColor;
     }
     return nil;
 }
@@ -75,7 +78,7 @@
     
     //image format example: IMG(imageName)
     //Loading the image as `imageName` from mainBundle
-    NSString *imageName = [inputValue extractFirstRegex:@"^IMG\\([\\d|\\w]*\\)$"];
+    NSString *imageName = [inputValue extractFirstRegex:@"^IMG\\(([\\d|\\w]*)\\)$"];
     if (imageName) {
         return [UIImage imageNamed:imageName];
     }

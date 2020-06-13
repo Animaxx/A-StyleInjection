@@ -9,9 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface A_ColorHelper : NSObject
+@interface _ColorHelper : NSObject
 
-+ (UIColor* _Nonnull) MakeColorByR:(NSInteger)r G:(NSInteger)g B:(NSInteger)b;
-+ (UIColor* _Nullable) A_ColorMakeFormString:(NSString* _Nonnull) str;
++ (UIColor* _Nullable) CrateColorForm:(NSString* _Nonnull) str;
 
 @end

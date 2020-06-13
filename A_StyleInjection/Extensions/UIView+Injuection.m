@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import "A_StyleManager.h"
 #import "PrivateMethodsHeader.h"
+#import "DebugManager.h"
 
 @implementation UIView(Injuection)
 
@@ -133,7 +134,6 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
     if (isReloadSubviews && [[[self parentController] childViewControllers] count] > 0) {
         loadSubviewsStyle();
     }
-    
 }
 
 - (BOOL)__traceResponseChain {
@@ -190,7 +190,11 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
     if ([self __verifyInjuectStyle:value tokey:keypath]) {
         @try {
             [self setValue:value forKeyPath:keypath];
+            if ([[A_StyleManager shared] enableDebug]) {
+                [self layoutIfNeeded];
+            }
         } @catch (NSException *ex) {
+            
             NSLog(@"[Style Manager Error]\nSet style failed to key `%@` with value: %@ \n              error: %@ ",
                   keypath, value, ex);
         }

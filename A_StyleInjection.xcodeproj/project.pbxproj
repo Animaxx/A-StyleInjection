@@ -24,12 +24,14 @@
 		A97D515E20A9366400B2A52A /* UIView+Injuection.h in Headers */ = {isa = PBXBuildFile; fileRef = A97D515C20A9366400B2A52A /* UIView+Injuection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A97D515F20A9366400B2A52A /* UIView+Injuection.m in Sources */ = {isa = PBXBuildFile; fileRef = A97D515D20A9366400B2A52A /* UIView+Injuection.m */; };
 		A983C25E209228BD001E0D94 /* A_StyleInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = A983C25C209228BD001E0D94 /* A_StyleInjection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9BA97E7248F03A800C90ACC /* DebugManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A9BA97E5248F03A800C90ACC /* DebugManager.h */; };
+		A9BA97E8248F03A800C90ACC /* DebugManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BA97E6248F03A800C90ACC /* DebugManager.m */; };
+		A9BA982124948D7B00C90ACC /* _ColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BA981F24948D7A00C90ACC /* _ColorHelper.m */; };
+		A9BA982224948D7B00C90ACC /* _ColorHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A9BA982024948D7A00C90ACC /* _ColorHelper.h */; };
 		A9C5395B20C3ADAE00EA1747 /* StyleHierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = A9C5395920C3ADAE00EA1747 /* StyleHierarchy.h */; };
 		A9C5395C20C3ADAE00EA1747 /* StyleHierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C5395A20C3ADAE00EA1747 /* StyleHierarchy.m */; };
 		A9EAD53D20D5A78400598AA7 /* NSString+Regex.h in Headers */ = {isa = PBXBuildFile; fileRef = A9EAD53B20D5A78400598AA7 /* NSString+Regex.h */; };
 		A9EAD53E20D5A78400598AA7 /* NSString+Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = A9EAD53C20D5A78400598AA7 /* NSString+Regex.m */; };
-		A9EF488120AFE677004BE8E8 /* A_ColorHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A9EF487F20AFE677004BE8E8 /* A_ColorHelper.h */; };
-		A9EF488220AFE677004BE8E8 /* A_ColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9EF488020AFE677004BE8E8 /* A_ColorHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,12 +55,14 @@
 		A983C25C209228BD001E0D94 /* A_StyleInjection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = A_StyleInjection.h; sourceTree = "<group>"; };
 		A983C25D209228BD001E0D94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9A33627248228C100AD4B39 /* PrivateMethodsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateMethodsHeader.h; sourceTree = "<group>"; };
+		A9BA97E5248F03A800C90ACC /* DebugManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugManager.h; sourceTree = "<group>"; };
+		A9BA97E6248F03A800C90ACC /* DebugManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DebugManager.m; sourceTree = "<group>"; };
+		A9BA981F24948D7A00C90ACC /* _ColorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ColorHelper.m; sourceTree = "<group>"; };
+		A9BA982024948D7A00C90ACC /* _ColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ColorHelper.h; sourceTree = "<group>"; };
 		A9C5395920C3ADAE00EA1747 /* StyleHierarchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StyleHierarchy.h; path = A_StyleInjection/Common/StyleHierarchy.h; sourceTree = SOURCE_ROOT; };
 		A9C5395A20C3ADAE00EA1747 /* StyleHierarchy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StyleHierarchy.m; path = A_StyleInjection/Common/StyleHierarchy.m; sourceTree = SOURCE_ROOT; };
 		A9EAD53B20D5A78400598AA7 /* NSString+Regex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Regex.h"; sourceTree = "<group>"; };
 		A9EAD53C20D5A78400598AA7 /* NSString+Regex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Regex.m"; sourceTree = "<group>"; };
-		A9EF487F20AFE677004BE8E8 /* A_ColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A_ColorHelper.h; sourceTree = "<group>"; };
-		A9EF488020AFE677004BE8E8 /* A_ColorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A_ColorHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,12 +143,14 @@
 		A9EF487D20AFE3AD004BE8E8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A9BA982024948D7A00C90ACC /* _ColorHelper.h */,
+				A9BA981F24948D7A00C90ACC /* _ColorHelper.m */,
 				A9C5395920C3ADAE00EA1747 /* StyleHierarchy.h */,
 				A9C5395A20C3ADAE00EA1747 /* StyleHierarchy.m */,
-				A9EF487F20AFE677004BE8E8 /* A_ColorHelper.h */,
-				A9EF488020AFE677004BE8E8 /* A_ColorHelper.m */,
 				A9EAD53B20D5A78400598AA7 /* NSString+Regex.h */,
 				A9EAD53C20D5A78400598AA7 /* NSString+Regex.m */,
+				A9BA97E5248F03A800C90ACC /* DebugManager.h */,
+				A9BA97E6248F03A800C90ACC /* DebugManager.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -170,15 +176,16 @@
 				A95491D62467667D00983A29 /* InjectionStyleSourceRepository.h in Headers */,
 				A983C25E209228BD001E0D94 /* A_StyleInjection.h in Headers */,
 				A97D515A20A9140000B2A52A /* A_StyleManager.h in Headers */,
-				A9EF488120AFE677004BE8E8 /* A_ColorHelper.h in Headers */,
 				A97D515E20A9366400B2A52A /* UIView+Injuection.h in Headers */,
 				A9EAD53D20D5A78400598AA7 /* NSString+Regex.h in Headers */,
 				A9C5395B20C3ADAE00EA1747 /* StyleHierarchy.h in Headers */,
 				A92378F624882D9900C1B35F /* SystemStyleValueDecoderFactory.h in Headers */,
 				A95491CE246745B300983A29 /* UIButton+Injection.h in Headers */,
+				A9BA982224948D7B00C90ACC /* _ColorHelper.h in Headers */,
 				A95491AD246462B700983A29 /* StyleDictionaryProvider.h in Headers */,
 				A95491A824636DB600983A29 /* StylePlistProvider.h in Headers */,
 				A92378F824882D9900C1B35F /* DefaultStyleDecoder.h in Headers */,
+				A9BA97E7248F03A800C90ACC /* DebugManager.h in Headers */,
 				A92378FA24882D9900C1B35F /* StyleValueDecoderInterface.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +222,7 @@
 				TargetAttributes = {
 					A983C258209228BD001E0D94 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
@@ -251,13 +259,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9BA982124948D7B00C90ACC /* _ColorHelper.m in Sources */,
 				A92378F524882D9900C1B35F /* SystemStyleValueDecoderFactory.m in Sources */,
 				A95491A924636DB600983A29 /* StylePlistProvider.m in Sources */,
 				A92378F724882D9900C1B35F /* DefaultStyleDecoder.m in Sources */,
+				A9BA97E8248F03A800C90ACC /* DebugManager.m in Sources */,
 				A95491AE246462B700983A29 /* StyleDictionaryProvider.m in Sources */,
 				A9EAD53E20D5A78400598AA7 /* NSString+Regex.m in Sources */,
 				A9C5395C20C3ADAE00EA1747 /* StyleHierarchy.m in Sources */,
-				A9EF488220AFE677004BE8E8 /* A_ColorHelper.m in Sources */,
 				A95491CF246745B300983A29 /* UIButton+Injection.m in Sources */,
 				A97D515F20A9366400B2A52A /* UIView+Injuection.m in Sources */,
 				A97D515B20A9140000B2A52A /* A_StyleManager.m in Sources */,
@@ -386,6 +395,7 @@
 		A983C262209228BD001E0D94 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -404,6 +414,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "animax.A-StyleInjection";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -411,6 +423,7 @@
 		A983C263209228BD001E0D94 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -429,6 +442,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "animax.A-StyleInjection";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

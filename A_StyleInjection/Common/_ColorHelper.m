@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Animax Deng. All rights reserved.
 //
 
-#import "A_ColorHelper.h"
+#import "_ColorHelper.h"
 
-@implementation A_ColorHelper
+@implementation _ColorHelper
 
-+ (NSNumber*) A_ToNumber: (NSString*) hex {
++ (NSNumber*) _ToNumber: (NSString*) hex {
     hex = [hex uppercaseString];
     
     int val = 0;
@@ -52,7 +52,7 @@
     
     return [NSNumber numberWithInt:res - 1];
 }
-+ (NSArray *) A_SpliteColor:(NSString*) colorString {
++ (NSArray *) _SpliteColor:(NSString*) colorString {
     NSMutableArray *colors = [NSMutableArray arrayWithCapacity:3];
     
     if ([colorString hasPrefix:@"#"]) {
@@ -61,16 +61,13 @@
     
     for (int i = 0; i < 3; i++) {
         NSRange range = NSMakeRange(i * 2, 2);
-        [colors addObject: [self A_ToNumber: [colorString substringWithRange:range]]];
+        [colors addObject: [self _ToNumber: [colorString substringWithRange:range]]];
     }
     
     return colors;
 }
 
-+ (UIColor*) MakeColorByR:(NSInteger)r G:(NSInteger)g B:(NSInteger)b {
-    return [UIColor colorWithRed:(float)r/255 green:(float)g/255 blue:(float)b/255 alpha:1.0f];
-}
-+ (UIColor*) A_ColorMakeFormString:(NSString*) str {
++ (UIColor*) CrateColorForm:(NSString*) str {
     if ([str hasPrefix:@"#"]) {
         str = [str substringFromIndex:1];
     }
@@ -79,7 +76,7 @@
         return nil;
     }
     
-    NSArray *colors = [self A_SpliteColor: str];
+    NSArray *colors = [self _SpliteColor: str];
     
     NSNumber *red = [colors objectAtIndex:0];
     NSNumber *green = [colors objectAtIndex:1];
