@@ -37,6 +37,7 @@ static IMP __original_DidMoveToWindow_Method_Imp;
 }
 - (void)setStyleIdentifier:(NSString *)value {
     [self setAssociateValue:value withKey:viewStyleIdentifier type:OBJC_ASSOCIATION_COPY_NONATOMIC];
+    [self loadStyle:false forceReload:true];
 }
 
 - (UIViewController *)parentController {
@@ -99,7 +100,9 @@ void __A_InjuectionDidMoveToWindow (id self,SEL _cmd) {
         return;
     }
     
-    [self setAssociateValue:@(true) withKey:viewStyleApplied type:OBJC_ASSOCIATION_COPY];
+    if (isReloadSubviews) {
+        [self setAssociateValue:@(true) withKey:viewStyleApplied type:OBJC_ASSOCIATION_COPY];
+    }
     
     __weak UIView *blockSelf = self;
     
