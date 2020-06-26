@@ -34,8 +34,8 @@
     if (![inputValue isKindOfClass:[NSString class]]) { return nil; }
     
     //color format example: #000000
-    if ([inputValue matchRegexFormat:@"^#(\\d|[A-F]){6}$"]) {
-        return [_ColorHelper CrateColorForm:inputValue];
+    if ([inputValue matchRegexFormat:@"^#(\\d|[a-f]|[A-F]){6}$"]) {
+        return [_ColorHelper CrateColorForm:[inputValue uppercaseString]];
     }
     return nil;
 }
